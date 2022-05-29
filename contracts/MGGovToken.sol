@@ -2,17 +2,10 @@
 pragma solidity 0.6.12;
 
 import "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol";
+import "hardhat/console.sol";
 
 contract MockGovToken is BEP20("MockGovToken", "MGToken") {
-    function mint(address _to, uint256 _amount) public onlyOwner {
-        _mint(_to, _amount);
-        _moveDelegates(address(0), _delegates[_to], _amount);
-    }
-
-    function burn(address _from, uint256 _amount) public onlyOwner {
-        _burn(_from, _amount);
-        _moveDelegates(_delegates[_from], address(0), _amount);
-    }
+    uint256 private _maximumSupply = 10**9 * 10**18;
 
     constructor() public {}
 
@@ -46,6 +39,17 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
 
     /// @notice An event thats emitted when a delegate account's vote balance changes
     event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
+
+    function mint(address _to, uint256 _amount) public onlyOwner {
+        require(_maximumSupply >= totalSupply(), "total supply overflows max amount"); // ##################
+        _mint(_to, _amount);
+        _moveDelegates(address(0), _delegates[_to], _amount);
+    }
+
+    function burn(address _from, uint256 _amount) public onlyOwner {
+        _burn(_from, _amount);
+        _moveDelegates(_delegates[_from], address(0), _amount);
+    }
 
     /**
      * @notice Delegate votes from `msg.sender` to `delegatee`
@@ -91,7 +95,7 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
         address signatory = ecrecover(digest, v, r, s);
         require(signatory != address(0), "MGToken::delegateBySig: invalid signature");
         require(nonce == nonces[signatory]++, "MGToken::delegateBySig: invalid nonce");
-        require(now <= expiry, "MGToken::delegateBySig: signature expired");
+        require(block.timestamp >= expiry, "MGToken::delegateBySig: signature expired");
         return _delegate(signatory, delegatee);
     }
 

@@ -4281,8 +4281,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MGGovToken.sol": {
-      "lastModificationDate": 1653783792263,
-      "contentHash": "2b9ed9d3097cc5c09175303df1defa97",
+      "lastModificationDate": 1653864779039,
+      "contentHash": "bef7b0d093699098fc913d1a7e2c3022",
       "sourceName": "contracts/MGGovToken.sol",
       "solcConfig": {
         "version": "0.6.12",
@@ -4316,7 +4316,8 @@
         }
       },
       "imports": [
-        "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol"
+        "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol",
+        "hardhat/console.sol"
       ],
       "versionPragmas": [
         "0.6.12"
@@ -4326,7 +4327,7 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol": {
-      "lastModificationDate": 1653441158131,
+      "lastModificationDate": 1653863593919,
       "contentHash": "11050257d698ec3930a69503f3fd12b1",
       "sourceName": "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol",
       "solcConfig": {

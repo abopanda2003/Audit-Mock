@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const { ethers, getNamedAccounts, deployments, getChainId } = require("hardhat");
 const chalk = require('chalk');
+const { OperationCanceledException } = require("typescript");
 const { deploy } = deployments;
 
 // const uniswapRouterABI = require("../artifacts/contracts/interfaces/IUniswapRouter.sol/IUniswapV2Router02.json").abi;
@@ -311,8 +312,14 @@ describe("Mock Audit", () => {
         cyan(`\nDeploying MGGovToken Contract...`);
         const MockGovToken = await ethers.getContractFactory("MockGovToken");
         mgGovContract = await MockGovToken.deploy();
-        await mgGovContract.deployed();    
+        await mgGovContract.connect(owner).deployed();    
         displayResult("\nGovernance token deployed at", mgGovContract);
+        
+        await expect(await mgGovContract.owner()).to.equal(owner.address);
+
+        // let tx = await mgGovContract.mint(owner.address, ethers.utils.parseEther("1000000"));
+        // await tx.wait();
+        // console.log("the balance of owner: ", await mgGovContract.balanceOf(owner.address));
     });
     
     it("delegateBySig function test", async() => {
@@ -321,10 +328,41 @@ describe("Mock Audit", () => {
         let flatSig = await wallet.signMessage(message);
         let sig = ethers.utils.splitSignature(flatSig);
         const nonce = await mgGovContract.nonces(wallet.address);
-        const expiry = await 
-        // let tx = await mgGovContract.delegateBySig(wallet.address, );
-        // await tx.wait();
+        const expiry = await mgGovContract.getCurrentTime();
+        let tx = await mgGovContract.delegateBySig(
+            wallet.address, nonce, expiry, sig.v, sig.r, sig.s 
+        );
+        await tx.wait();
+        green("tested delegateBySig function");
     })
+
+    it("delegate function test", async() => {
+        let balance = await mgGovContract.balanceOf(owner.address);
+        let ts = await mgGovContract.totalSupply();
+        console.log("owner balance: ", balance);
+        console.log("total supply: ", ts);
+        let tx = await mgGovContract.connect(user1).delegate(user2.address);
+        await tx.wait();
+        await expect(tx).to.emit(mgGovContract, "DelegateChanged")
+                        .withArgs(user1.address, "0x0000000000000000000000000000000000000000", user2.address);
+        await expect(await mgGovContract.delegates(user1.address))
+                .to.equal(user2.address);
+        const checkPoints = await mgGovContract.checkpoints(user1.address, 1);
+        console.log("check points info:", checkPoints);
+    })
+
+    it("voting amplification attack test", async() => {
+
+    })
+    
+    it("voting displacement attack test", async() => {
+
+    })
+
+    it("redelegation failure test", async() => {
+
+    })
+
 //     it("Token Transfer 00...", async() => {
 //       let smtTokenIns = await ethers.getContractAt("SmartToken", smtContract.address);
 //       await displayWalletBalances(smtTokenIns, false, false, false, true, false, false); 
