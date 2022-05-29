@@ -2,6 +2,3309 @@
   "version": "3.2",
   "log": [
     {
+      "Minion": {
+        "src": "contracts\\MockAccessControl.sol:4",
+        "version": {
+          "withMetadata": "89fbcf6e96e0a26ae495031bf5d6ce61aff7b4a35ddea593649a30734168ebd2",
+          "withoutMetadata": "d83de79e9a549862ca369e32dab8afdc6a0691f7c0fe28c7ba8e646d062c618e",
+          "linkedWithoutMetadata": "d83de79e9a549862ca369e32dab8afdc6a0691f7c0fe28c7ba8e646d062c618e"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "pwn()",
+          "verify(address)",
+          "retrieve()",
+          "timeVal()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Minion",
+            "src": "contracts\\MockAccessControl.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Minion",
+              "label": "contributionAmount",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\MockAccessControl.sol:6"
+            },
+            {
+              "contract": "Minion",
+              "label": "pwned",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\MockAccessControl.sol:7"
+            },
+            {
+              "contract": "Minion",
+              "label": "owner",
+              "type": "t_address",
+              "src": "contracts\\MockAccessControl.sol:8"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            },
+            "t_bool": {
+              "label": "bool"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "SafeMath": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\math\\SafeMath.sol:18",
+        "version": {
+          "withMetadata": "6ed2f7f44e98caf2bc5f68439afee8be931cd1e48fce93dee31bc3aa64e2d02f",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IBEP20": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\IBEP20.sol:5",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "getOwner()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "WETH": {
+        "src": "contracts\\libs\\weth.sol:5",
+        "version": {
+          "withMetadata": "5ce36234c2ba97b1c7c8bc318cfbcf91cebc259b44c09708a7760f20d04e6602",
+          "withoutMetadata": "e2f908cd0a47e73fffc9e916c68301b899645121289275b3747b354cb7fb2ac6",
+          "linkedWithoutMetadata": "e2f908cd0a47e73fffc9e916c68301b899645121289275b3747b354cb7fb2ac6"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "()",
+          "deposit()",
+          "withdraw(uint256)",
+          "totalSupply()",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "name",
+            "src": "contracts\\libs\\weth.sol:6"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "symbol",
+            "src": "contracts\\libs\\weth.sol:7"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "decimals",
+            "src": "contracts\\libs\\weth.sol:8"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "WETH",
+              "label": "name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\weth.sol:6"
+            },
+            {
+              "contract": "WETH",
+              "label": "symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\weth.sol:7"
+            },
+            {
+              "contract": "WETH",
+              "label": "decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\weth.sol:8"
+            },
+            {
+              "contract": "WETH",
+              "label": "balanceOf",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\weth.sol:15"
+            },
+            {
+              "contract": "WETH",
+              "label": "allowance",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\libs\\weth.sol:16"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "SafeMathInt": {
+        "src": "contracts\\libs\\SafeMathInt.sol:5",
+        "version": {
+          "withMetadata": "c059f1da2e21372642dcb69e3ded67e6ffa3c234007e51b6ef8e767fa4219142",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "MinterRole": {
+        "src": "contracts\\libs\\MinterRole.sol:7",
+        "version": {
+          "withMetadata": "c28ac9d7c5fbef45150f9d265584a657425c830e9b826f51cdca4cbf6b09fb5c",
+          "withoutMetadata": "79c48f6c4c87903424dcd7fad223ac888d8aa556bfc15f75d66050a097b2b423",
+          "linkedWithoutMetadata": "79c48f6c4c87903424dcd7fad223ac888d8aa556bfc15f75d66050a097b2b423"
+        },
+        "inherit": [],
+        "libraries": [
+          "Roles"
+        ],
+        "methods": [
+          "()",
+          "isMinter(address)",
+          "renounceMinter()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "MinterRole",
+            "src": "contracts\\libs\\MinterRole.sol:15"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "MinterRole",
+              "label": "_minters",
+              "type": "t_struct(Role)100_storage",
+              "src": "contracts\\libs\\MinterRole.sol:13"
+            }
+          ],
+          "types": {
+            "t_struct(Role)100_storage": {
+              "label": "struct Roles.Role",
+              "members": [
+                {
+                  "label": "bearer",
+                  "type": "t_mapping(t_address,t_bool)"
+                }
+              ]
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_bool": {
+              "label": "bool"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "Roles": {
+        "src": "contracts\\libs\\Roles.sol:5",
+        "version": {
+          "withMetadata": "05087cb998faa832b75672ffc2428715309cb73c0c86a083f28d1033cd24899f",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IERC20": {
+        "src": "@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "ERC20Detailed": {
+        "src": "contracts\\libs\\ERC20Detailed.sol:6",
+        "inherit": [
+          "IERC20"
+        ],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC20Detailed",
+            "src": "contracts\\libs\\ERC20Detailed.sol:11"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "ERC20Detailed",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\ERC20Detailed.sol:7"
+            },
+            {
+              "contract": "ERC20Detailed",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\ERC20Detailed.sol:8"
+            },
+            {
+              "contract": "ERC20Detailed",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\ERC20Detailed.sol:9"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IUniswapV2Router01": {
+        "src": "contracts\\interfaces\\IUniswapV2Router.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "factory()",
+          "WETH()",
+          "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
+          "addLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidity(address,address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityWithPermit(address,address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "removeLiquidityETHWithPermit(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+          "swapTokensForExactTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokens(uint256,address[],address,uint256)",
+          "swapTokensForExactETH(uint256,uint256,address[],address,uint256)",
+          "swapExactTokensForETH(uint256,uint256,address[],address,uint256)",
+          "swapETHForExactTokens(uint256,address[],address,uint256)",
+          "quote(uint256,uint256,uint256)",
+          "getAmountOut(uint256,uint256,uint256)",
+          "getAmountIn(uint256,uint256,uint256)",
+          "getAmountsOut(uint256,address[])",
+          "getAmountsIn(uint256,address[])"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IUniswapV2Router02": {
+        "src": "contracts\\interfaces\\IUniswapV2Router.sol:98",
+        "inherit": [
+          "IUniswapV2Router01"
+        ],
+        "libraries": [],
+        "methods": [
+          "removeLiquidityETHSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokensSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokensSupportingFeeOnTransferTokens(uint256,address[],address,uint256)",
+          "swapExactTokensForETHSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IUniswapV2Pair": {
+        "src": "contracts\\interfaces\\IUniswapV2Pair.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+          "MINIMUM_LIQUIDITY()",
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()",
+          "initialize(address,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IUniswapV2Factory": {
+        "src": "contracts\\interfaces\\IUniswapV2Factory.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "feeTo()",
+          "feeToSetter()",
+          "getPair(address,address)",
+          "allPairs(uint256)",
+          "allPairsLength()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)",
+          "init_code_pair_hash()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC20": {
+        "src": "contracts\\libs\\dexfactory.sol:26",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapERC20": {
+        "src": "contracts\\libs\\dexfactory.sol:42",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapFactory": {
+        "src": "contracts\\libs\\dexfactory.sol:8",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "feeTo()",
+          "feeToSetter()",
+          "init_code_pair_hash()",
+          "getPair(address,address)",
+          "allPairs()",
+          "allPairsLength()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapPair": {
+        "src": "contracts\\libs\\dexfactory.sol:64",
+        "inherit": [
+          "IPancakeSwapERC20"
+        ],
+        "libraries": [],
+        "methods": [
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()",
+          "initialize(address,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapRouter": {
+        "src": "contracts\\libs\\dexRouter.sol:94",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "factory()",
+          "WETH()",
+          "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
+          "addLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidity(address,address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityWithPermit(address,address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "removeLiquidityETHWithPermit(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+          "swapTokensForExactTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokens(uint256,address[],address,uint256)",
+          "swapTokensForExactETH(uint256,uint256,address[],address,uint256)",
+          "swapExactTokensForETH(uint256,uint256,address[],address,uint256)",
+          "swapETHForExactTokens(uint256,address[],address,uint256)",
+          "quote(uint256,uint256,uint256)",
+          "getAmountOut(uint256,uint256,uint256)",
+          "getAmountIn(uint256,uint256,uint256)",
+          "getAmountsOut(uint256,address[])",
+          "getAmountsIn(uint256,address[])",
+          "removeLiquidityETHSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokensSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokensSupportingFeeOnTransferTokens(uint256,address[],address,uint256)",
+          "swapExactTokensForETHSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IWETH": {
+        "src": "contracts\\libs\\dexRouter.sol:226",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "deposit()",
+          "transfer(address,uint256)",
+          "withdraw(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapLibrary": {
+        "src": "contracts\\libs\\dexRouter.sol:715",
+        "version": {
+          "withMetadata": "5683c56f02846240647fdc4d60a32fd1c68d9d7b6a641f24dbf4c39a8b8571c0",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapRouter": {
+        "src": "contracts\\libs\\dexRouter.sol:232",
+        "version": {
+          "withMetadata": "b49b3842129aa5d28dc61a459b8d4e5cdc0960e055e8c6d2ffe30f1a9a48cfee",
+          "withoutMetadata": "4a4ce9116bd71e89aea72370e9777e8dfd73e3d0b6dbb4cad18b6e5c4a90cceb",
+          "linkedWithoutMetadata": "4a4ce9116bd71e89aea72370e9777e8dfd73e3d0b6dbb4cad18b6e5c4a90cceb"
+        },
+        "inherit": [
+          "IPancakeSwapRouter"
+        ],
+        "libraries": [
+          "SafeMath",
+          "PancakeSwapLibrary",
+          "TransferHelper"
+        ],
+        "methods": [
+          "(address,address)",
+          "()",
+          "factory()",
+          "WETH()",
+          "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
+          "addLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidity(address,address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityWithPermit(address,address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "removeLiquidityETHWithPermit(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "removeLiquidityETHSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+          "swapTokensForExactTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokens(uint256,address[],address,uint256)",
+          "swapTokensForExactETH(uint256,uint256,address[],address,uint256)",
+          "swapExactTokensForETH(uint256,uint256,address[],address,uint256)",
+          "swapETHForExactTokens(uint256,address[],address,uint256)",
+          "swapExactTokensForTokensSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokensSupportingFeeOnTransferTokens(uint256,address[],address,uint256)",
+          "swapExactTokensForETHSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)",
+          "quote(uint256,uint256,uint256)",
+          "getAmountOut(uint256,uint256,uint256)",
+          "getAmountIn(uint256,uint256,uint256)",
+          "getAmountsOut(uint256,address[])",
+          "getAmountsIn(uint256,address[])"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapRouter",
+            "src": "contracts\\libs\\dexRouter.sol:243"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapRouter",
+              "label": "factoryAddr",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexRouter.sol:235"
+            },
+            {
+              "contract": "PancakeSwapRouter",
+              "label": "WETHAddr",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexRouter.sol:236"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "contracts\\libs\\dexfactory.sol:534",
+        "version": {
+          "withMetadata": "ed016bf8981af137429e8b3a66ea562a6838bfa01125ace3337bc9c5abd22e59",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "TransferHelper": {
+        "src": "contracts\\libs\\dexRouter.sol:797",
+        "version": {
+          "withMetadata": "ee33936235c73567de31c9cdbc1a09993bf12690e61dc5ccaf1c6ffcde7c38c7",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapCallee": {
+        "src": "contracts\\libs\\dexfactory.sol:95",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "PancakeSwapCall(address,uint256,uint256,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Math": {
+        "src": "contracts\\libs\\dexfactory.sol:550",
+        "version": {
+          "withMetadata": "83f170bd8265dff52985e654d12d82da3d2a1419405a8569c5f8b866e0e184db",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapERC20": {
+        "src": "contracts\\libs\\dexfactory.sol:99",
+        "version": {
+          "withMetadata": "9ad4c80cfbdb8290e99f1b2089721f1f6ea0d4b147bf875f110af16363e90a26",
+          "withoutMetadata": "0bc2d8210ec9362e8f59ad8184ed33ebba4eec0fcf87a54a2b71c43467067797",
+          "linkedWithoutMetadata": "0bc2d8210ec9362e8f59ad8184ed33ebba4eec0fcf87a54a2b71c43467067797"
+        },
+        "inherit": [
+          "IPancakeSwapERC20"
+        ],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [
+          "()",
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapERC20",
+            "src": "contracts\\libs\\dexfactory.sol:114"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_name",
+            "src": "contracts\\libs\\dexfactory.sol:102"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_symbol",
+            "src": "contracts\\libs\\dexfactory.sol:103"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_decimals",
+            "src": "contracts\\libs\\dexfactory.sol:104"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_PERMIT_TYPEHASH",
+            "src": "contracts\\libs\\dexfactory.sol:111"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\dexfactory.sol:102"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\dexfactory.sol:103"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\dexfactory.sol:104"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:105"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_balanceOf",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\dexfactory.sol:106"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_allowance",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\libs\\dexfactory.sol:107"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_DOMAIN_SEPARATOR",
+              "type": "t_bytes32",
+              "src": "contracts\\libs\\dexfactory.sol:109"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_PERMIT_TYPEHASH",
+              "type": "t_bytes32",
+              "src": "contracts\\libs\\dexfactory.sol:111"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_nonces",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\dexfactory.sol:112"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_bytes32": {
+              "label": "bytes32"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapFactory": {
+        "src": "contracts\\libs\\dexfactory.sol:464",
+        "version": {
+          "withMetadata": "8562dc27b21d7d077ce0a72de8d9cc63f95be2b5064165cab39f8b6483766ea8",
+          "withoutMetadata": "7491fb4907fc0ac2ac164720fd9ebd6f7a7ac6a2114dc997f527e48d43139b42",
+          "linkedWithoutMetadata": "7491fb4907fc0ac2ac164720fd9ebd6f7a7ac6a2114dc997f527e48d43139b42"
+        },
+        "inherit": [
+          "IPancakeSwapFactory"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address)",
+          "getPair(address,address)",
+          "allPairs()",
+          "allPairsLength()",
+          "feeTo()",
+          "feeToSetter()",
+          "init_code_pair_hash()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapFactory",
+            "src": "contracts\\libs\\dexfactory.sol:475"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_feeTo",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:465"
+            },
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_feeToSetter",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:466"
+            },
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_getPair",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_address))",
+              "src": "contracts\\libs\\dexfactory.sol:468"
+            },
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_allPairs",
+              "type": "t_array(t_address)dyn_storage",
+              "src": "contracts\\libs\\dexfactory.sol:469"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_address))": {
+              "label": "mapping(address => mapping(address => address))"
+            },
+            "t_mapping(t_address,t_address)": {
+              "label": "mapping(address => address)"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapPair": {
+        "src": "contracts\\libs\\dexfactory.sol:230",
+        "version": {
+          "withMetadata": "277dd2ed49f3f8cd9f4a3a270e77234f00557641146c57361c79b2bbc75f56e8",
+          "withoutMetadata": "89281a0d484647dd568a6399e8bad231575b1c5fb1eabab15c5b3a85940df4b0",
+          "linkedWithoutMetadata": "89281a0d484647dd568a6399e8bad231575b1c5fb1eabab15c5b3a85940df4b0"
+        },
+        "inherit": [
+          "PancakeSwapERC20",
+          "IPancakeSwapPair",
+          "IPancakeSwapERC20"
+        ],
+        "libraries": [
+          "SafeMath",
+          "UQ112x112",
+          "Math"
+        ],
+        "methods": [
+          "()",
+          "initialize(address,address)",
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapPair",
+            "src": "contracts\\libs\\dexfactory.sol:257"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "unlocked",
+            "src": "contracts\\libs\\dexfactory.sol:249"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_factory",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:237"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_token0",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:238"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_token1",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:239"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_reserve0",
+              "type": "t_uint112",
+              "src": "contracts\\libs\\dexfactory.sol:241"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_reserve1",
+              "type": "t_uint112",
+              "src": "contracts\\libs\\dexfactory.sol:242"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_blockTimestampLast",
+              "type": "t_uint32",
+              "src": "contracts\\libs\\dexfactory.sol:243"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_price0CumulativeLast",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:245"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_price1CumulativeLast",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:246"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_kLast",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:247"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "unlocked",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:249"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint112": {
+              "label": "uint112"
+            },
+            "t_uint32": {
+              "label": "uint32"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "UQ112x112": {
+        "src": "contracts\\libs\\dexfactory.sol:575",
+        "version": {
+          "withMetadata": "824b1ea54d7130cb5c3b15bf03d925203621b5afdc392305c5ef1e0f42048518",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "bbcff4a844bcc6d88bc4102204a3192020ca0647fd98f516c30746a9ac660974",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "Address": {
+        "src": "contracts\\MockStakingRewards.sol:4",
+        "version": {
+          "withMetadata": "76189660d741ba0c04834a6e46a17648694d31257e9185a1261cfcae09367887",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "contracts\\MockStakingRewards.sol:186"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC20": {
+        "src": "contracts\\MockStakingRewards.sol:217",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeERC20": {
+        "src": "contracts\\MockStakingRewards.sol:302",
+        "version": {
+          "withMetadata": "480b7291479082ee03dd31ab0f0d56cf4a5d367781c8b12b9eb85b13f7cad8d2",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "Address"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "mockStakingRewards": {
+        "src": "contracts\\MockStakingRewards.sol:384",
+        "version": {
+          "withMetadata": "574eb770da6cde748af004f3eeca9a7e26d61a12b748f7815857dd03619a1a77",
+          "withoutMetadata": "169808095d72d4477959b776b2824379470673e19be87f610fa1bb08a3f14d56",
+          "linkedWithoutMetadata": "169808095d72d4477959b776b2824379470673e19be87f610fa1bb08a3f14d56"
+        },
+        "inherit": [],
+        "libraries": [
+          "SafeERC20"
+        ],
+        "methods": [
+          "(address,address,uint256)",
+          "getUserDepositedAmount(address)",
+          "getUserPendingReward(address)",
+          "getTotalPending()",
+          "getLatestRewardPerShare()",
+          "getLpSupplyAndLastBlock()",
+          "setMaxFundAmount(uint256)",
+          "fund(uint256,uint256)",
+          "updatePool()",
+          "deposit(uint256)",
+          "withdraw(uint256)",
+          "harvest(address)",
+          "sweep()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "mockStakingRewards",
+            "src": "contracts\\MockStakingRewards.sol:453"
+          },
+          {
+            "kind": "state-variable-immutable",
+            "name": "startBlock",
+            "src": "contracts\\MockStakingRewards.sol:413"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "mockStakingRewards",
+              "label": "totalPaidOut",
+              "type": "t_uint256",
+              "src": "contracts\\MockStakingRewards.sol:416"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "rewardPerBlock",
+              "type": "t_uint256",
+              "src": "contracts\\MockStakingRewards.sol:418"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "endBlock",
+              "type": "t_uint256",
+              "src": "contracts\\MockStakingRewards.sol:420"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "lastFunded",
+              "type": "t_uint256",
+              "src": "contracts\\MockStakingRewards.sol:422"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "maxFundAmount",
+              "type": "t_uint256",
+              "src": "contracts\\MockStakingRewards.sol:424"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "mockTokenContract",
+              "type": "t_contract(IERC20)368",
+              "src": "contracts\\MockStakingRewards.sol:431"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "mockLpTokenContract",
+              "type": "t_contract(IERC20)368",
+              "src": "contracts\\MockStakingRewards.sol:433"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "poolInfo",
+              "type": "t_struct(PoolInfo)598_storage",
+              "src": "contracts\\MockStakingRewards.sol:434"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "rewarder",
+              "type": "t_address",
+              "src": "contracts\\MockStakingRewards.sol:437"
+            },
+            {
+              "contract": "mockStakingRewards",
+              "label": "userInfo",
+              "type": "t_mapping(t_address,t_struct(UserInfo)593_storage)",
+              "src": "contracts\\MockStakingRewards.sol:438"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_contract(IERC20)368": {
+              "label": "contract IERC20"
+            },
+            "t_struct(PoolInfo)598_storage": {
+              "label": "struct mockStakingRewards.PoolInfo",
+              "members": [
+                {
+                  "label": "lastRewardBlock",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "accmockPerShare",
+                  "type": "t_uint256"
+                }
+              ]
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_struct(UserInfo)593_storage)": {
+              "label": "mapping(address => struct mockStakingRewards.UserInfo)"
+            },
+            "t_struct(UserInfo)593_storage": {
+              "label": "struct mockStakingRewards.UserInfo",
+              "members": [
+                {
+                  "label": "amount",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "rewardDebt",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "TransferHelper": {
+        "src": "contracts\\libs\\TransferHelper.sol:6",
+        "version": {
+          "withMetadata": "6d1e151ab6957ea4930a311944d9e4a5bcbf1e2d6117a6b2046274b102e8da7b",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "SafeMath": {
+        "src": "contracts\\libs\\SafeMath.sol:8",
+        "version": {
+          "withMetadata": "c8c77fc9f7d8bc79210dac6597ce01d3b4518356d3e43d84692784ec6073e1b9",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "StableMath": {
+        "src": "contracts\\libs\\StableMath.sol:6",
+        "version": {
+          "withMetadata": "f6fcdb7e989c6719d0d9d322baae500756a80ec37c8661c20ce1a389c0ec2cdc",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IBEP20": {
+        "src": "contracts\\libs\\IBEP20.sol:5",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "getOwner()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IUniswapV2Factory": {
+        "src": "contracts\\interfaces\\IUniswapV2Factory.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "feeTo()",
+          "feeToSetter()",
+          "getPair(address,address)",
+          "allPairs(uint256)",
+          "allPairsLength()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)",
+          "init_code_pair_hash()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "UniswapV2Library": {
+        "src": "contracts\\libs\\UniswapV2Library.sol:10",
+        "version": {
+          "withMetadata": "c2550c4d6a61479fa3c238e106161a84a7305d522f5c410ea10676afec472a10",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC20": {
+        "src": "contracts\\libs\\dexfactory.sol:26",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapCallee": {
+        "src": "contracts\\libs\\dexfactory.sol:95",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "PancakeSwapCall(address,uint256,uint256,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapERC20": {
+        "src": "contracts\\libs\\dexfactory.sol:42",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapFactory": {
+        "src": "contracts\\libs\\dexfactory.sol:8",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "feeTo()",
+          "feeToSetter()",
+          "init_code_pair_hash()",
+          "getPair(address,address)",
+          "allPairs()",
+          "allPairsLength()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapPair": {
+        "src": "contracts\\libs\\dexfactory.sol:64",
+        "inherit": [
+          "IPancakeSwapERC20"
+        ],
+        "libraries": [],
+        "methods": [
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()",
+          "initialize(address,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Math": {
+        "src": "contracts\\libs\\dexfactory.sol:550",
+        "version": {
+          "withMetadata": "b20b45d683cc97101be1d1e4c84feade312b82d32d12336926ad7a1b423d09c3",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapERC20": {
+        "src": "contracts\\libs\\dexfactory.sol:99",
+        "version": {
+          "withMetadata": "83be7419ce7c85c38ae782bd0a4c89857152f64843293304a48c6b191c3d9258",
+          "withoutMetadata": "fa5f0cf7e707199594832a7df6958b39b73764e4340324e59eb7b65926a4f1cb",
+          "linkedWithoutMetadata": "fa5f0cf7e707199594832a7df6958b39b73764e4340324e59eb7b65926a4f1cb"
+        },
+        "inherit": [
+          "IPancakeSwapERC20"
+        ],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [
+          "()",
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapERC20",
+            "src": "contracts\\libs\\dexfactory.sol:114"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_name",
+            "src": "contracts\\libs\\dexfactory.sol:102"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_symbol",
+            "src": "contracts\\libs\\dexfactory.sol:103"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_decimals",
+            "src": "contracts\\libs\\dexfactory.sol:104"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_PERMIT_TYPEHASH",
+            "src": "contracts\\libs\\dexfactory.sol:111"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\dexfactory.sol:102"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\dexfactory.sol:103"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\dexfactory.sol:104"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:105"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_balanceOf",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\dexfactory.sol:106"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_allowance",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\libs\\dexfactory.sol:107"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_DOMAIN_SEPARATOR",
+              "type": "t_bytes32",
+              "src": "contracts\\libs\\dexfactory.sol:109"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_PERMIT_TYPEHASH",
+              "type": "t_bytes32",
+              "src": "contracts\\libs\\dexfactory.sol:111"
+            },
+            {
+              "contract": "PancakeSwapERC20",
+              "label": "_nonces",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\dexfactory.sol:112"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_bytes32": {
+              "label": "bytes32"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapFactory": {
+        "src": "contracts\\libs\\dexfactory.sol:464",
+        "version": {
+          "withMetadata": "4b8a97f6d3b90d042eac3fecd58d04ffeb45d8b878180c8d05ad959133bd9158",
+          "withoutMetadata": "be6624f37d3313cd66d49a9214f21a3df5c84fb080d0bb9836e1dc0f1eaf598d",
+          "linkedWithoutMetadata": "be6624f37d3313cd66d49a9214f21a3df5c84fb080d0bb9836e1dc0f1eaf598d"
+        },
+        "inherit": [
+          "IPancakeSwapFactory"
+        ],
+        "libraries": [],
+        "methods": [
+          "(address)",
+          "getPair(address,address)",
+          "allPairs()",
+          "allPairsLength()",
+          "feeTo()",
+          "feeToSetter()",
+          "init_code_pair_hash()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapFactory",
+            "src": "contracts\\libs\\dexfactory.sol:475"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_feeTo",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:465"
+            },
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_feeToSetter",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:466"
+            },
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_getPair",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_address))",
+              "src": "contracts\\libs\\dexfactory.sol:468"
+            },
+            {
+              "contract": "PancakeSwapFactory",
+              "label": "_allPairs",
+              "type": "t_array(t_address)dyn_storage",
+              "src": "contracts\\libs\\dexfactory.sol:469"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_address))": {
+              "label": "mapping(address => mapping(address => address))"
+            },
+            "t_mapping(t_address,t_address)": {
+              "label": "mapping(address => address)"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "PancakeSwapPair": {
+        "src": "contracts\\libs\\dexfactory.sol:230",
+        "version": {
+          "withMetadata": "253a9282f6ff70a478de65bc2c38cd1aa20527a11dd7354b1d8c92ee287e247b",
+          "withoutMetadata": "a4244e03e6e601810a00943a9ccab94d0f54b051fd1133a06883c7db0c70fd57",
+          "linkedWithoutMetadata": "a4244e03e6e601810a00943a9ccab94d0f54b051fd1133a06883c7db0c70fd57"
+        },
+        "inherit": [
+          "PancakeSwapERC20",
+          "IPancakeSwapPair",
+          "IPancakeSwapERC20"
+        ],
+        "libraries": [
+          "SafeMath",
+          "UQ112x112",
+          "Math"
+        ],
+        "methods": [
+          "()",
+          "initialize(address,address)",
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "PancakeSwapPair",
+            "src": "contracts\\libs\\dexfactory.sol:257"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "unlocked",
+            "src": "contracts\\libs\\dexfactory.sol:249"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_factory",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:237"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_token0",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:238"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_token1",
+              "type": "t_address",
+              "src": "contracts\\libs\\dexfactory.sol:239"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_reserve0",
+              "type": "t_uint112",
+              "src": "contracts\\libs\\dexfactory.sol:241"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_reserve1",
+              "type": "t_uint112",
+              "src": "contracts\\libs\\dexfactory.sol:242"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_blockTimestampLast",
+              "type": "t_uint32",
+              "src": "contracts\\libs\\dexfactory.sol:243"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_price0CumulativeLast",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:245"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_price1CumulativeLast",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:246"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "_kLast",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:247"
+            },
+            {
+              "contract": "PancakeSwapPair",
+              "label": "unlocked",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\dexfactory.sol:249"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint112": {
+              "label": "uint112"
+            },
+            "t_uint32": {
+              "label": "uint32"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "contracts\\libs\\dexfactory.sol:534",
+        "version": {
+          "withMetadata": "46b524856e9b108b05871c3cc70a5097915c5eb5f9e01d7f66bf78b27e0fda2d",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "UQ112x112": {
+        "src": "contracts\\libs\\dexfactory.sol:575",
+        "version": {
+          "withMetadata": "b8906c3ed5da0e21dac11e79947d501bc1a812acfc2a4631bc5cd1aa2085ba12",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "59472dfb789c849fc33f3339106aad898cdd7cd9ffb4c86a6cf06ddbc33f90b3",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "Context": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\GSN\\Context.sol:15",
+        "version": {
+          "withMetadata": "e363de52921426a2d20e251153b0fc37d8a388dd2ce9cdaae2ace8b7defb4d42",
+          "withoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b",
+          "linkedWithoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Ownable": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol:19",
+        "version": {
+          "withMetadata": "a08369f0828e70e91fcde76126d890e18dd3e0acbf83fa3bcca4fb57dcffe9e8",
+          "withoutMetadata": "7ff55bd567aae08eb78a75a4f31fab254080444a12c19c80082ee7b77690f7aa",
+          "linkedWithoutMetadata": "7ff55bd567aae08eb78a75a4f31fab254080444a12c19c80082ee7b77690f7aa"
+        },
+        "inherit": [
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "()",
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol:27"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Ownable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol:20"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\math\\SafeMath.sol:18",
+        "version": {
+          "withMetadata": "8a8d10038a876610606aa265c60bc5bc39c07247733ba24b7ef0fd060a650c94",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "BEP20": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:35",
+        "version": {
+          "withMetadata": "679f2bf52457ac3bf9b7f4350b6372716f3c56b9ec683006f1e7c41b4871db78",
+          "withoutMetadata": "f78a37541700eb383bc6bdd5ccbe733152308f0b9a419cb037ed2bc9dc8065f7",
+          "linkedWithoutMetadata": "f78a37541700eb383bc6bdd5ccbe733152308f0b9a419cb037ed2bc9dc8065f7"
+        },
+        "inherit": [
+          "Ownable",
+          "IBEP20",
+          "Context"
+        ],
+        "libraries": [
+          "SafeMath",
+          "Address"
+        ],
+        "methods": [
+          "(string,string)",
+          "getOwner()",
+          "name()",
+          "decimals()",
+          "symbol()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)",
+          "mint(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "BEP20",
+            "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:58"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "BEP20",
+              "label": "_balances",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:39"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_allowances",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:41"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:43"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:45"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:46"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:47"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IBEP20": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\IBEP20.sol:5",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "getOwner()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Address": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\utils\\Address.sol:8",
+        "version": {
+          "withMetadata": "3aeb8e5fd2a4760eebfcd82e231e683dfee93a74156f0cbe6d27a1988dba2765",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "MockGovToken": {
+        "src": "contracts\\MGGovToken.sol:6",
+        "version": {
+          "withMetadata": "cc8ffd9a8424124b9bc249f40974792c0396483797e14cd356086fe665380a16",
+          "withoutMetadata": "38bbb5cf80730312c3f85b7ecbec2ea5e3994849bf6fb53f7c5a1b682b97780e",
+          "linkedWithoutMetadata": "38bbb5cf80730312c3f85b7ecbec2ea5e3994849bf6fb53f7c5a1b682b97780e"
+        },
+        "inherit": [
+          "BEP20",
+          "Ownable",
+          "IBEP20",
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "mint(address,uint256)",
+          "burn(address,uint256)",
+          "()",
+          "delegates(address)",
+          "delegate(address)",
+          "delegateBySig(address,uint256,uint256,uint8,bytes32,bytes32)",
+          "getCurrentVotes(address)",
+          "getPriorVotes(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "MockGovToken",
+              "label": "_delegates",
+              "type": "t_mapping(t_address,t_address)",
+              "src": "contracts\\MGGovToken.sol:19"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "checkpoints",
+              "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1319_storage))",
+              "src": "contracts\\MGGovToken.sol:28"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "numCheckpoints",
+              "type": "t_mapping(t_address,t_uint32)",
+              "src": "contracts\\MGGovToken.sol:31"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "nonces",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\MGGovToken.sol:42"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_address)": {
+              "label": "mapping(address => address)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1319_storage))": {
+              "label": "mapping(address => mapping(uint32 => struct MockGovToken.Checkpoint))"
+            },
+            "t_mapping(t_uint32,t_struct(Checkpoint)1319_storage)": {
+              "label": "mapping(uint32 => struct MockGovToken.Checkpoint)"
+            },
+            "t_uint32": {
+              "label": "uint32"
+            },
+            "t_struct(Checkpoint)1319_storage": {
+              "label": "struct MockGovToken.Checkpoint",
+              "members": [
+                {
+                  "label": "fromBlock",
+                  "type": "t_uint32"
+                },
+                {
+                  "label": "votes",
+                  "type": "t_uint256"
+                }
+              ]
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_uint32)": {
+              "label": "mapping(address => uint32)"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "IPancakeSwapFactory": {
+        "src": "contracts\\libs\\IExchange.sol:5",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "feeTo()",
+          "feeToSetter()",
+          "getPair(address,address)",
+          "allPairs(uint256)",
+          "allPairsLength()",
+          "createPair(address,address)",
+          "setFeeTo(address)",
+          "setFeeToSetter(address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapPair": {
+        "src": "contracts\\libs\\IExchange.sol:21",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "DOMAIN_SEPARATOR()",
+          "PERMIT_TYPEHASH()",
+          "nonces(address)",
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+          "MINIMUM_LIQUIDITY()",
+          "factory()",
+          "token0()",
+          "token1()",
+          "getReserves()",
+          "price0CumulativeLast()",
+          "price1CumulativeLast()",
+          "kLast()",
+          "mint(address)",
+          "burn(address)",
+          "swap(uint256,uint256,address,bytes)",
+          "skim(address)",
+          "sync()",
+          "initialize(address,address)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IPancakeSwapRouter": {
+        "src": "contracts\\libs\\IExchange.sol:72",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "factory()",
+          "WETH()",
+          "addLiquidity(address,address,uint256,uint256,uint256,uint256,address,uint256)",
+          "addLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidity(address,address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETH(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityWithPermit(address,address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "removeLiquidityETHWithPermit(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)",
+          "swapTokensForExactTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokens(uint256,address[],address,uint256)",
+          "swapTokensForExactETH(uint256,uint256,address[],address,uint256)",
+          "swapExactTokensForETH(uint256,uint256,address[],address,uint256)",
+          "swapETHForExactTokens(uint256,address[],address,uint256)",
+          "quote(uint256,uint256,uint256)",
+          "getAmountOut(uint256,uint256,uint256)",
+          "getAmountIn(uint256,uint256,uint256)",
+          "getAmountsOut(uint256,address[])",
+          "getAmountsIn(uint256,address[])",
+          "removeLiquidityETHSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256)",
+          "removeLiquidityETHWithPermitSupportingFeeOnTransferTokens(address,uint256,uint256,uint256,address,uint256,bool,uint8,bytes32,bytes32)",
+          "swapExactTokensForTokensSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)",
+          "swapExactETHForTokensSupportingFeeOnTransferTokens(uint256,address[],address,uint256)",
+          "swapExactTokensForETHSupportingFeeOnTransferTokens(uint256,uint256,address[],address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Context": {
+        "src": "contracts\\libs\\staking.sol:6",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Ownable": {
+        "src": "contracts\\libs\\staking.sol:22",
+        "inherit": [
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "contracts\\libs\\staking.sol:33"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Ownable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "contracts\\libs\\staking.sol:23"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SHARKBABYOKEN": {
+        "src": "contracts\\libs\\sharkbaby.sol:230",
+        "version": {
+          "withMetadata": "70dca54bb24e6240cb2e59fd2def892212583af55d21c49a83d4a9cc17705195",
+          "withoutMetadata": "4537950402fe863cc8e093dad75dc60e22132eed0f7b0eec8fb6d9e342018621",
+          "linkedWithoutMetadata": "4537950402fe863cc8e093dad75dc60e22132eed0f7b0eec8fb6d9e342018621"
+        },
+        "inherit": [
+          "Ownable",
+          "Context"
+        ],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [
+          "getOwner()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)",
+          "burn(uint256)",
+          "(address)",
+          "setInitialAddresses(address)",
+          "setFeeAddresses(address,address,address)",
+          "setMaxTxAmount(uint256)",
+          "setbuyFee(uint256,uint256,uint256,uint256)",
+          "setsellFee(uint256,uint256,uint256,uint256)",
+          "getTotalSellFee()",
+          "getTotalBuyFee()",
+          "excludeAddressFromFee(address,bool)",
+          "()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "SHARKBABYOKEN",
+            "src": "contracts\\libs\\sharkbaby.sol:390"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "swapAndLiquifyEnabled",
+            "src": "contracts\\libs\\sharkbaby.sol:374"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_maxTxAmount",
+            "src": "contracts\\libs\\sharkbaby.sol:383"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "numTokensSellToAddToLiquidity",
+            "src": "contracts\\libs\\sharkbaby.sol:384"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_balances",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\sharkbaby.sol:244"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_allowances",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\libs\\sharkbaby.sol:246"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\sharkbaby.sol:248"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\sharkbaby.sol:249"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\sharkbaby.sol:250"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\sharkbaby.sol:251"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "marketingAddress",
+              "type": "t_address",
+              "src": "contracts\\libs\\sharkbaby.sol:358"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "gameAddress",
+              "type": "t_address",
+              "src": "contracts\\libs\\sharkbaby.sol:359"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "poolAddress",
+              "type": "t_address",
+              "src": "contracts\\libs\\sharkbaby.sol:360"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "babyPoolAddress",
+              "type": "t_address",
+              "src": "contracts\\libs\\sharkbaby.sol:361"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "PancakeSwapRouter",
+              "type": "t_contract(IPancakeSwapRouter)690",
+              "src": "contracts\\libs\\sharkbaby.sol:364"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "PancakeSwapV2Pair",
+              "type": "t_address",
+              "src": "contracts\\libs\\sharkbaby.sol:365"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "inSwapAndLiquify",
+              "type": "t_bool",
+              "src": "contracts\\libs\\sharkbaby.sol:367"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "swapAndLiquifyEnabled",
+              "type": "t_bool",
+              "src": "contracts\\libs\\sharkbaby.sol:374"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "sellFees",
+              "type": "t_struct(Fees)1474_storage",
+              "src": "contracts\\libs\\sharkbaby.sol:377"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "buyFees",
+              "type": "t_struct(Fees)1474_storage",
+              "src": "contracts\\libs\\sharkbaby.sol:378"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "isExcludeFromFee",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\libs\\sharkbaby.sol:380"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "_maxTxAmount",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\sharkbaby.sol:383"
+            },
+            {
+              "contract": "SHARKBABYOKEN",
+              "label": "numTokensSellToAddToLiquidity",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\sharkbaby.sol:384"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_contract(IPancakeSwapRouter)690": {
+              "label": "contract IPancakeSwapRouter"
+            },
+            "t_bool": {
+              "label": "bool"
+            },
+            "t_struct(Fees)1474_storage": {
+              "label": "struct SHARKBABYOKEN.Fees",
+              "members": [
+                {
+                  "label": "marketing",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "gameWallet",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "liquidity",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "poolfee",
+                  "type": "t_uint256"
+                }
+              ]
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "contracts\\libs\\staking.sol:87",
+        "version": {
+          "withMetadata": "17e66e7485cd78c44760d7bddc1485a14af88e0b586a406c74f9b5f3991196cc",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC20": {
+        "src": "contracts\\libs\\staking.sol:106",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transfer(address,uint256)",
+          "burn(uint256)",
+          "transferFrom(address,address,uint256)",
+          "mint(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Staking": {
+        "src": "contracts\\libs\\staking.sol:145",
+        "version": {
+          "withMetadata": "e27a1410e183f57e6cb9e4105b9aaebed31d50dbec87451cb87edfc6e187f356",
+          "withoutMetadata": "5f33608ab074d5678ce4be955f7e576998469d6c851168983a43788a4a6a08ec",
+          "linkedWithoutMetadata": "5f33608ab074d5678ce4be955f7e576998469d6c851168983a43788a4a6a08ec"
+        },
+        "inherit": [
+          "Ownable",
+          "Context"
+        ],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [
+          "(address,address,address)",
+          "countTotalStake()",
+          "countTotalReward()",
+          "APY()",
+          "getStakeInfo(address)",
+          "countStake(address)",
+          "countReward(address)",
+          "countFee(address)",
+          "checkReward(address)",
+          "stake(uint256,address)",
+          "unstaking()",
+          "claimRewards()",
+          "setInitialAddresses(address,address)",
+          "getRewardableAmount()",
+          "swapTokenForReward()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Staking",
+            "src": "contracts\\libs\\staking.sol:177"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Staking",
+              "label": "rewardTokenAddress_1",
+              "type": "t_address",
+              "src": "contracts\\libs\\staking.sol:161"
+            },
+            {
+              "contract": "Staking",
+              "label": "rewardTokenAddress_2",
+              "type": "t_address",
+              "src": "contracts\\libs\\staking.sol:162"
+            },
+            {
+              "contract": "Staking",
+              "label": "stakeTokenAddress",
+              "type": "t_address",
+              "src": "contracts\\libs\\staking.sol:163"
+            },
+            {
+              "contract": "Staking",
+              "label": "marketingAddress",
+              "type": "t_address",
+              "src": "contracts\\libs\\staking.sol:165"
+            },
+            {
+              "contract": "Staking",
+              "label": "totalStakingAmount",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\staking.sol:167"
+            },
+            {
+              "contract": "Staking",
+              "label": "lastUpdateTime",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\staking.sol:168"
+            },
+            {
+              "contract": "Staking",
+              "label": "totalStake",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\staking.sol:169"
+            },
+            {
+              "contract": "Staking",
+              "label": "stakerNum",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\staking.sol:171"
+            },
+            {
+              "contract": "Staking",
+              "label": "PancakeSwapRouter",
+              "type": "t_contract(IPancakeSwapRouter)690",
+              "src": "contracts\\libs\\staking.sol:173"
+            },
+            {
+              "contract": "Staking",
+              "label": "stakers",
+              "type": "t_mapping(t_address,t_struct(Staker)2780_storage)",
+              "src": "contracts\\libs\\staking.sol:175"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_contract(IPancakeSwapRouter)690": {
+              "label": "contract IPancakeSwapRouter"
+            },
+            "t_mapping(t_address,t_struct(Staker)2780_storage)": {
+              "label": "mapping(address => struct Staking.Staker)"
+            },
+            "t_struct(Staker)2780_storage": {
+              "label": "struct Staking.Staker",
+              "members": [
+                {
+                  "label": "referal",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "stakingAmount",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "lastUpdateTime",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "lastStakeUpdateTime",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "stake",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "rewards_1",
+                  "type": "t_uint256"
+                },
+                {
+                  "label": "rewards_2",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "Context": {
+        "src": "contracts\\libs\\ERC20.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "ERC20": {
+        "src": "contracts\\libs\\ERC20.sol:156",
+        "version": {
+          "withMetadata": "8a4a3169fd22d8a2f2e3701cd189bd4656d9f773df1f8c62a233f11ac5eaa6e0",
+          "withoutMetadata": "302668e259f28bb549a4ea14fc818ee493e1db0758e65833c55d7ca029c0eb13",
+          "linkedWithoutMetadata": "302668e259f28bb549a4ea14fc818ee493e1db0758e65833c55d7ca029c0eb13"
+        },
+        "inherit": [
+          "Context"
+        ],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [
+          "(string,string)",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)",
+          "burn(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC20",
+            "src": "contracts\\libs\\ERC20.sol:173"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_totalSupply",
+            "src": "contracts\\libs\\ERC20.sol:168"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "_decimals",
+            "src": "contracts\\libs\\ERC20.sol:169"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "ERC20",
+              "label": "_balances",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\ERC20.sol:164"
+            },
+            {
+              "contract": "ERC20",
+              "label": "_allowances",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\libs\\ERC20.sol:166"
+            },
+            {
+              "contract": "ERC20",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\ERC20.sol:168"
+            },
+            {
+              "contract": "ERC20",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\ERC20.sol:169"
+            },
+            {
+              "contract": "ERC20",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\ERC20.sol:170"
+            },
+            {
+              "contract": "ERC20",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\ERC20.sol:171"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_string_storage": {
+              "label": "string"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "contracts\\libs\\ERC20.sol:20",
+        "version": {
+          "withMetadata": "5c57f36085cfaf6ea69a729eccd7cc60139672d2ec400f2454aafa87a6921e67",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "BEP20Token": {
+        "src": "contracts\\libs\\BUSD.sol:334",
+        "version": {
+          "withMetadata": "d82b327f101c18bbd846be06e448abbee783f5e712c8fc5c680626e200be9bd8",
+          "withoutMetadata": "d2c44b071757ba77a868a80932ab27af2bea2fd668a0647f5c8bf217ecf2fd69",
+          "linkedWithoutMetadata": "d2c44b071757ba77a868a80932ab27af2bea2fd668a0647f5c8bf217ecf2fd69"
+        },
+        "inherit": [
+          "Ownable",
+          "IBEP20",
+          "Context"
+        ],
+        "libraries": [
+          "SafeMath"
+        ],
+        "methods": [
+          "()",
+          "getOwner()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)",
+          "mint(uint256)",
+          "burn(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "BEP20Token",
+            "src": "contracts\\libs\\BUSD.sol:346"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "BEP20Token",
+              "label": "_balances",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\libs\\BUSD.sol:337"
+            },
+            {
+              "contract": "BEP20Token",
+              "label": "_allowances",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "contracts\\libs\\BUSD.sol:339"
+            },
+            {
+              "contract": "BEP20Token",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "contracts\\libs\\BUSD.sol:341"
+            },
+            {
+              "contract": "BEP20Token",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "contracts\\libs\\BUSD.sol:342"
+            },
+            {
+              "contract": "BEP20Token",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\BUSD.sol:343"
+            },
+            {
+              "contract": "BEP20Token",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "contracts\\libs\\BUSD.sol:344"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            },
+            "t_string_storage": {
+              "label": "string"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "Context": {
+        "src": "contracts\\libs\\BUSD.sol:99",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IBEP20": {
+        "src": "contracts\\libs\\BUSD.sol:7",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "getOwner()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Ownable": {
+        "src": "contracts\\libs\\BUSD.sol:275",
+        "inherit": [
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "contracts\\libs\\BUSD.sol:283"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Ownable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "contracts\\libs\\BUSD.sol:276"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "contracts\\libs\\BUSD.sol:127",
+        "version": {
+          "withMetadata": "3c5e02633a503a0ac8ce2c0f6609917389e7117ad0b8de48d1f2e3c6b86da21f",
+          "withoutMetadata": "84fb217c68f538a0f01a573a7f9b991a4d3395eb699ba1c1542256b37f46c48b",
+          "linkedWithoutMetadata": "84fb217c68f538a0f01a573a7f9b991a4d3395eb699ba1c1542256b37f46c48b"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
       "Address": {
         "src": "contracts\\MockStakingRewards.sol:4",
         "version": {

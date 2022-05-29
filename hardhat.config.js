@@ -33,17 +33,13 @@ module.exports = {
     timeout: 30000,
   },
   namedAccounts: {
-    AutoLiquidityReceiver: {
-      56: '0xF52c9341dC4ee92c321Fa11e01E3a6303f9bBe00',
-      97: '0xF52c9341dC4ee92c321Fa11e01E3a6303f9bBe00',
-      1337: '0xF52c9341dC4ee92c321Fa11e01E3a6303f9bBe00'
-    }
+    deployer: ''
   },
   defaultNetwork: "hardhat",
 
   networks: {
     hardhat: {
-      chainId: 97, //bsctestnet
+      chainId: 1337, //bsctestnet
       allowUnlimitedContractSize: true
     },
     localhost: {

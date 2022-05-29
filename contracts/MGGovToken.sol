@@ -210,4 +210,8 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
         }
         return chainId;
     }
+
+    function getCurrentTime() public view returns(uint256) {
+        return block.timestamp;
+    }
 }

@@ -4045,6 +4045,1404 @@
         "SafeERC20",
         "mockStakingRewards"
       ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\BUSD.sol": {
+      "lastModificationDate": 1652692129525,
+      "contentHash": "e77cb4cb94b92d5a18ebef5617c19cff",
+      "sourceName": "contracts/libs/BUSD.sol",
+      "solcConfig": {
+        "version": "0.5.16",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.5.16"
+      ],
+      "artifacts": [
+        "BEP20Token",
+        "Context",
+        "IBEP20",
+        "Ownable",
+        "SafeMath"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\ERC20.sol": {
+      "lastModificationDate": 1653357821920,
+      "contentHash": "d8b9fc823edac2df8826cdfe8cc3bbab",
+      "sourceName": "contracts/libs/ERC20.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "Context",
+        "ERC20",
+        "SafeMath"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\IExchange.sol": {
+      "lastModificationDate": 1652692129531,
+      "contentHash": "560276d53519a80e2af8461db6d9f678",
+      "sourceName": "contracts/libs/IExchange.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.6.12"
+      ],
+      "artifacts": [
+        "IPancakeSwapFactory",
+        "IPancakeSwapPair",
+        "IPancakeSwapRouter"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\staking.sol": {
+      "lastModificationDate": 1652692129538,
+      "contentHash": "ab6d94540f67046ac178d2f9f60fadc6",
+      "sourceName": "contracts/libs/staking.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IExchange.sol"
+      ],
+      "versionPragmas": [
+        "^0.6.12"
+      ],
+      "artifacts": [
+        "Context",
+        "IERC20",
+        "Ownable",
+        "SafeMath",
+        "Staking"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\sharkbaby.sol": {
+      "lastModificationDate": 1652692129536,
+      "contentHash": "cb98ddd996cc7a6fdb41c27e50cd16bf",
+      "sourceName": "contracts/libs/sharkbaby.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IExchange.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "Context",
+        "Ownable",
+        "SHARKBABYOKEN",
+        "SafeMath"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MGGovToken.sol": {
+      "lastModificationDate": 1653783792263,
+      "contentHash": "2b9ed9d3097cc5c09175303df1defa97",
+      "sourceName": "contracts/MGGovToken.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "MockGovToken"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol": {
+      "lastModificationDate": 1653441158131,
+      "contentHash": "11050257d698ec3930a69503f3fd12b1",
+      "sourceName": "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../access/Ownable.sol",
+        "../../GSN/Context.sol",
+        "./IBEP20.sol",
+        "../../math/SafeMath.sol",
+        "../../utils/Address.sol"
+      ],
+      "versionPragmas": [
+        ">=0.4.0"
+      ],
+      "artifacts": [
+        "BEP20"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol": {
+      "lastModificationDate": 1653442536637,
+      "contentHash": "c4d360ba1dd9d012def8b2a4ea8da16f",
+      "sourceName": "@pancakeswap/pancake-swap-lib/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../GSN/Context.sol"
+      ],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "Ownable"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\GSN\\Context.sol": {
+      "lastModificationDate": 1653442525018,
+      "contentHash": "b0446e2b12751773526a976f98af3ff8",
+      "sourceName": "@pancakeswap/pancake-swap-lib/contracts/GSN/Context.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.6.12"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\utils\\Address.sol": {
+      "lastModificationDate": 1653441158127,
+      "contentHash": "de562b0730ba43a470f98a8f658c8a55",
+      "sourceName": "@pancakeswap/pancake-swap-lib/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.6.12",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.6.2"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\UniswapV2Library.sol": {
+      "lastModificationDate": 1652692129539,
+      "contentHash": "21101d2e4a00f64741a3f6ba2d867f55",
+      "sourceName": "contracts/libs/UniswapV2Library.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./dexfactory.sol",
+        "../interfaces/IUniswapV2Factory.sol"
+      ],
+      "versionPragmas": [
+        "0.8.4"
+      ],
+      "artifacts": [
+        "UniswapV2Library"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\IBEP20.sol": {
+      "lastModificationDate": 1652692129531,
+      "contentHash": "7220834826e86b1ae2ee2019664a35a1",
+      "sourceName": "contracts/libs/IBEP20.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.4"
+      ],
+      "artifacts": [
+        "IBEP20"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\SafeMath.sol": {
+      "lastModificationDate": 1652692129533,
+      "contentHash": "0715a07dd637fe40be11f0c8865f2432",
+      "sourceName": "contracts/libs/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.4"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\StableMath.sol": {
+      "lastModificationDate": 1652692129536,
+      "contentHash": "f36675ec3a53c3218b80e93d51a7d8cf",
+      "sourceName": "contracts/libs/StableMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./SafeMath.sol"
+      ],
+      "versionPragmas": [
+        "0.8.4"
+      ],
+      "artifacts": [
+        "StableMath"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\TransferHelper.sol": {
+      "lastModificationDate": 1652692129538,
+      "contentHash": "564eb976cd8ab7178f889871c6959c15",
+      "sourceName": "contracts/libs/TransferHelper.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.4"
+      ],
+      "artifacts": [
+        "TransferHelper"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MockStakingRewards.sol": {
+      "lastModificationDate": 1653443647781,
+      "contentHash": "abf22df352866770772002031c68147b",
+      "sourceName": "contracts/MockStakingRewards.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.4"
+      ],
+      "artifacts": [
+        "Address",
+        "IERC20",
+        "SafeERC20",
+        "mockStakingRewards"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\interfaces\\IUniswapV2Factory.sol": {
+      "lastModificationDate": 1652692129522,
+      "contentHash": "dc7e939999d3ee20416042160ff4a422",
+      "sourceName": "contracts/interfaces/IUniswapV2Factory.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "IUniswapV2Factory"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\dexfactory.sol": {
+      "lastModificationDate": 1652692129526,
+      "contentHash": "c706b148cd70972c653e90f61d7d2332",
+      "sourceName": "contracts/libs/dexfactory.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "IERC20",
+        "IPancakeSwapCallee",
+        "IPancakeSwapERC20",
+        "IPancakeSwapFactory",
+        "IPancakeSwapPair",
+        "Math",
+        "PancakeSwapERC20",
+        "PancakeSwapFactory",
+        "PancakeSwapPair",
+        "SafeMath",
+        "UQ112x112"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\hardhat\\console.sol": {
+      "lastModificationDate": 1653429479272,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\dexRouter.sol": {
+      "lastModificationDate": 1652692129527,
+      "contentHash": "6c09ce479b30da36cea41e869e27ac2b",
+      "sourceName": "contracts/libs/dexRouter.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "IERC20",
+        "IPancakeSwapERC20",
+        "IPancakeSwapFactory",
+        "IPancakeSwapPair",
+        "IPancakeSwapRouter",
+        "IWETH",
+        "PancakeSwapLibrary",
+        "PancakeSwapRouter",
+        "SafeMath",
+        "TransferHelper"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\interfaces\\IUniswapV2Pair.sol": {
+      "lastModificationDate": 1652692129522,
+      "contentHash": "e32842077859206e3aed1f962b0bde2e",
+      "sourceName": "contracts/interfaces/IUniswapV2Pair.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "IUniswapV2Pair"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\interfaces\\IUniswapV2Router.sol": {
+      "lastModificationDate": 1652692129523,
+      "contentHash": "800377e2605203e349e0da6a97a0f792",
+      "sourceName": "contracts/interfaces/IUniswapV2Router.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "IUniswapV2Router01",
+        "IUniswapV2Router02"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\ERC20Detailed.sol": {
+      "lastModificationDate": 1652692129530,
+      "contentHash": "a54ef207a4fae115cc6b4704879f9e05",
+      "sourceName": "contracts/libs/ERC20Detailed.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "ERC20Detailed"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
+      "lastModificationDate": 1653429461247,
+      "contentHash": "a44d1a099633876550ad2476b21bafbe",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\MinterRole.sol": {
+      "lastModificationDate": 1652692129532,
+      "contentHash": "9259d8f72a620cfe56ef80a1c6ecf38a",
+      "sourceName": "contracts/libs/MinterRole.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./Roles.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "MinterRole"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\Roles.sol": {
+      "lastModificationDate": 1652692129532,
+      "contentHash": "190a8b2d6ddd38629e3a406635593a9e",
+      "sourceName": "contracts/libs/Roles.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "Roles"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\SafeMathInt.sol": {
+      "lastModificationDate": 1652692129534,
+      "contentHash": "64f4bb17c55c32df52ac240f3d9659b8",
+      "sourceName": "contracts/libs/SafeMathInt.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.10"
+      ],
+      "artifacts": [
+        "SafeMathInt"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\weth.sol": {
+      "lastModificationDate": 1652692129539,
+      "contentHash": "cebc4d754fd019772fa871c97e5c46ef",
+      "sourceName": "contracts/libs/weth.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "WETH"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\math\\SafeMath.sol": {
+      "lastModificationDate": 1653441158152,
+      "contentHash": "239a610fe9ad93ec906b8a0782e0ec9d",
+      "sourceName": "@pancakeswap/pancake-swap-lib/contracts/math/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.0"
+      ],
+      "artifacts": [
+        "SafeMath"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\node_modules\\@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\IBEP20.sol": {
+      "lastModificationDate": 1653441158138,
+      "contentHash": "b0a64c2fffcef1f6039f4eab432523a4",
+      "sourceName": "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/IBEP20.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.0"
+      ],
+      "artifacts": [
+        "IBEP20"
+      ]
+    },
+    "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MockAccessControl.sol": {
+      "lastModificationDate": 1653443387817,
+      "contentHash": "11933e54f3837022692b2e22dc9b7d4e",
+      "sourceName": "contracts/MockAccessControl.sol",
+      "solcConfig": {
+        "version": "0.8.10",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1
+          },
+          "evmVersion": "berlin",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Minion"
+      ]
     }
   }
 }
