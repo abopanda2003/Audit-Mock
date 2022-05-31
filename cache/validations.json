@@ -229,6 +229,358 @@
       "MockGovToken": {
         "src": "contracts\\MGGovToken.sol:7",
         "version": {
+          "withMetadata": "2a6da6044145cc842b412cca455ec7cb5dee617a45566c51cb132d4372937c2f",
+          "withoutMetadata": "cb5e5b117e529fa9578e971ed16e77260cc4623cd2ed31441f06699ff98d0d23",
+          "linkedWithoutMetadata": "cb5e5b117e529fa9578e971ed16e77260cc4623cd2ed31441f06699ff98d0d23"
+        },
+        "inherit": [
+          "BEP20",
+          "Ownable",
+          "IBEP20",
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "()",
+          "mintFunc(address,uint256)",
+          "burnFunc(address,uint256)",
+          "delegates(address)",
+          "delegate(address)",
+          "delegateBySig(address,uint256,uint256,uint8,bytes32,bytes32)",
+          "getCurrentVotes(address)",
+          "getPriorVotes(address,uint256)",
+          "getCurrentTime()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "_maximumSupply",
+            "src": "contracts\\MGGovToken.sol:8"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "MockGovToken",
+              "label": "_maximumSupply",
+              "type": "t_uint256",
+              "src": "contracts\\MGGovToken.sol:8"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "_delegates",
+              "type": "t_mapping(t_address,t_address)",
+              "src": "contracts\\MGGovToken.sol:12"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "checkpoints",
+              "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1277_storage))",
+              "src": "contracts\\MGGovToken.sol:21"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "numCheckpoints",
+              "type": "t_mapping(t_address,t_uint32)",
+              "src": "contracts\\MGGovToken.sol:24"
+            },
+            {
+              "contract": "MockGovToken",
+              "label": "nonces",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\MGGovToken.sol:35"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_address)": {
+              "label": "mapping(address => address)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1277_storage))": {
+              "label": "mapping(address => mapping(uint32 => struct MockGovToken.Checkpoint))"
+            },
+            "t_mapping(t_uint32,t_struct(Checkpoint)1277_storage)": {
+              "label": "mapping(uint32 => struct MockGovToken.Checkpoint)"
+            },
+            "t_uint32": {
+              "label": "uint32"
+            },
+            "t_struct(Checkpoint)1277_storage": {
+              "label": "struct MockGovToken.Checkpoint",
+              "members": [
+                {
+                  "label": "fromBlock",
+                  "type": "t_uint32"
+                },
+                {
+                  "label": "votes",
+                  "type": "t_uint256"
+                }
+              ]
+            },
+            "t_mapping(t_address,t_uint32)": {
+              "label": "mapping(address => uint32)"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "console": {
+        "src": "hardhat\\console.sol:4",
+        "version": {
+          "withMetadata": "aea047eebf6f8ff0244a39ae88741c1f03f373bcede1e1bb9cfb8bfe0f54443c",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
+      "Context": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\GSN\\Context.sol:15",
+        "version": {
+          "withMetadata": "e363de52921426a2d20e251153b0fc37d8a388dd2ce9cdaae2ace8b7defb4d42",
+          "withoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b",
+          "linkedWithoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Ownable": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol:19",
+        "version": {
+          "withMetadata": "a08369f0828e70e91fcde76126d890e18dd3e0acbf83fa3bcca4fb57dcffe9e8",
+          "withoutMetadata": "7ff55bd567aae08eb78a75a4f31fab254080444a12c19c80082ee7b77690f7aa",
+          "linkedWithoutMetadata": "7ff55bd567aae08eb78a75a4f31fab254080444a12c19c80082ee7b77690f7aa"
+        },
+        "inherit": [
+          "Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "()",
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol:27"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Ownable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\access\\Ownable.sol:20"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "SafeMath": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\math\\SafeMath.sol:18",
+        "version": {
+          "withMetadata": "8a8d10038a876610606aa265c60bc5bc39c07247733ba24b7ef0fd060a650c94",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "BEP20": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:35",
+        "version": {
+          "withMetadata": "679f2bf52457ac3bf9b7f4350b6372716f3c56b9ec683006f1e7c41b4871db78",
+          "withoutMetadata": "f78a37541700eb383bc6bdd5ccbe733152308f0b9a419cb037ed2bc9dc8065f7",
+          "linkedWithoutMetadata": "f78a37541700eb383bc6bdd5ccbe733152308f0b9a419cb037ed2bc9dc8065f7"
+        },
+        "inherit": [
+          "Ownable",
+          "IBEP20",
+          "Context"
+        ],
+        "libraries": [
+          "SafeMath",
+          "Address"
+        ],
+        "methods": [
+          "(string,string)",
+          "getOwner()",
+          "name()",
+          "decimals()",
+          "symbol()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)",
+          "mint(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "BEP20",
+            "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:58"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "BEP20",
+              "label": "_balances",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:39"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_allowances",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:41"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_totalSupply",
+              "type": "t_uint256",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:43"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:45"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:46"
+            },
+            {
+              "contract": "BEP20",
+              "label": "_decimals",
+              "type": "t_uint8",
+              "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\BEP20.sol:47"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))"
+            },
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_uint8": {
+              "label": "uint8"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IBEP20": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\token\\BEP20\\IBEP20.sol:5",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "decimals()",
+          "symbol()",
+          "name()",
+          "getOwner()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Address": {
+        "src": "@pancakeswap\\pancake-swap-lib\\contracts\\utils\\Address.sol:8",
+        "version": {
+          "withMetadata": "3aeb8e5fd2a4760eebfcd82e231e683dfee93a74156f0cbe6d27a1988dba2765",
+          "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+          "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "MockGovToken": {
+        "src": "contracts\\MGGovToken.sol:7",
+        "version": {
           "withMetadata": "ee091a4e7cd3c1deca991166318aeae818e15c2db02ae0af3e81201ac5b04326",
           "withoutMetadata": "e1a42173d31229342e069c6a86e6cdafe6339ca8ea33771225f3161ebf199626",
           "linkedWithoutMetadata": "e1a42173d31229342e069c6a86e6cdafe6339ca8ea33771225f3161ebf199626"

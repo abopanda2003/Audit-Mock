@@ -254,6 +254,10 @@ const swapSMTForBUSD = async(
       await displayLiquidityPoolBalance("SMT-BUSD Pool:", pairInstance);
 }
 
+const toAmount = (amount) => {
+    return ethers.utils.formatEther(amount);
+}
+
 describe("Mock Audit", () => {
 
   green("*********************************");
@@ -317,9 +321,21 @@ describe("Mock Audit", () => {
         
         await expect(await mgGovContract.owner()).to.equal(owner.address);
 
-        // let tx = await mgGovContract.mint(owner.address, ethers.utils.parseEther("1000000"));
-        // await tx.wait();
-        // console.log("the balance of owner: ", await mgGovContract.balanceOf(owner.address));
+        await mgGovContract.mintFunc(owner.address, ethers.utils.parseUnits("1000000", 18));
+        console.log("the balance of owner: ", toAmount(await mgGovContract.balanceOf(owner.address)));
+
+        let users = [user1.address, user2.address, user3.address, user4.address];
+        let i=1;
+        for(const user of users) {
+            await mgGovContract.mintFunc(user, ethers.utils.parseUnits("10000", 18));
+            console.log("the balance of user", i, ": ", toAmount(await mgGovContract.balanceOf(user)));
+
+            const checkPoints = await mgGovContract.checkpoints(user, 1);
+            console.log("the voting balance of user", i++, ": ", toAmount(checkPoints[1]));
+        }
+
+        const ts = await mgGovContract.totalSupply();
+        console.log("total supply: ", toAmount(ts));
     });
     
     it("delegateBySig function test", async() => {
@@ -337,18 +353,17 @@ describe("Mock Audit", () => {
     })
 
     it("delegate function test", async() => {
-        let balance = await mgGovContract.balanceOf(owner.address);
-        let ts = await mgGovContract.totalSupply();
-        console.log("owner balance: ", balance);
-        console.log("total supply: ", ts);
         let tx = await mgGovContract.connect(user1).delegate(user2.address);
         await tx.wait();
         await expect(tx).to.emit(mgGovContract, "DelegateChanged")
                         .withArgs(user1.address, "0x0000000000000000000000000000000000000000", user2.address);
         await expect(await mgGovContract.delegates(user1.address))
                 .to.equal(user2.address);
-        const checkPoints = await mgGovContract.checkpoints(user1.address, 1);
-        console.log("check points info:", checkPoints);
+
+        const checkPoints = await mgGovContract.checkpoints(user2.address, 0);
+        console.log("the voting balance of user2: ", toAmount(checkPoints[1]));
+
+        console.log("the balance of user1: ", toAmount(await mgGovContract.balanceOf(user1.address)));
     })
 
     it("voting amplification attack test", async() => {
