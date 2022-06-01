@@ -189,7 +189,7 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
         uint32 nCheckpoints,
         uint256 oldVotes,
         uint256 newVotes
-    ) internal {
+    ) internal { //10000000000000000000000
         uint32 blockNumber = safe32(block.number, "MGToken::_writeCheckpoint: block number exceeds 32 bits");
 
         if (nCheckpoints > 0 && checkpoints[delegatee][nCheckpoints - 1].fromBlock == blockNumber) {
@@ -198,7 +198,6 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
             checkpoints[delegatee][nCheckpoints] = Checkpoint(blockNumber, newVotes);
             numCheckpoints[delegatee] = nCheckpoints + 1;
         }
-
         emit DelegateVotesChanged(delegatee, oldVotes, newVotes);
     }
 

@@ -258,6 +258,10 @@ const toAmount = (amount) => {
     return ethers.utils.formatEther(amount);
 }
 
+const parseAmount = (amount) => {
+  return ethers.utils.parseUnits(amount.toString(), 18);
+}
+
 describe("Mock Audit", () => {
 
   green("*********************************");
@@ -353,10 +357,16 @@ describe("Mock Audit", () => {
     })
 
     it("delegate function test", async() => {
+        const user1_balance = await mgGovContract.balanceOf(user1.address);
         let tx = await mgGovContract.connect(user1).delegate(user2.address);
-        await tx.wait();
-        await expect(tx).to.emit(mgGovContract, "DelegateChanged")
-                        .withArgs(user1.address, "0x0000000000000000000000000000000000000000", user2.address);
+        await tx.wait();        
+
+        await expect(tx)
+        .to.emit(mgGovContract, "DelegateChanged")
+        .withArgs(user1.address, "0x0000000000000000000000000000000000000000", user2.address)
+        .to.emit(mgGovContract, "DelegateVotesChanged")
+        .withArgs(user2.address, 0, user1_balance);
+
         await expect(await mgGovContract.delegates(user1.address))
                 .to.equal(user2.address);
 
@@ -377,120 +387,5 @@ describe("Mock Audit", () => {
     it("redelegation failure test", async() => {
 
     })
-
-//     it("Token Transfer 00...", async() => {
-//       let smtTokenIns = await ethers.getContractAt("SmartToken", smtContract.address);
-//       await displayWalletBalances(smtTokenIns, false, false, false, true, false, false); 
-//       await displayWalletBalances(busdContract, false, false, false, true, false, false); 
-
-//       let tranferTx =  await smtTokenIns.transfer(
-//         anotherUser.address,
-//         ethers.utils.parseUnits("300000", 18)
-//       );
-//       await tranferTx.wait();
-
-//       tranferTx =  await smtTokenIns.transfer(
-//         user.address,
-//         ethers.utils.parseUnits("300000", 18)
-//       );
-//       await tranferTx.wait();
-
-//       tranferTx =  await smtTokenIns.transfer(
-//         sponsor1.address,
-//         ethers.utils.parseUnits("300000", 18)
-//       );
-//       await tranferTx.wait();
-
-//       tranferTx =  await smtTokenIns.transfer(
-//         sponsor2.address,
-//         ethers.utils.parseUnits("300000", 18)
-//       );
-//       await tranferTx.wait();
-
-//       tranferTx =  await busdContract.transfer(
-//         anotherUser.address,
-//         ethers.utils.parseUnits("200000", 18)
-//       );
-//       await tranferTx.wait();
-
-//       tranferTx =  await busdContract.transfer(
-//         user.address,
-//         ethers.utils.parseUnits("200000", 18)
-//       );
-//       await tranferTx.wait();
-
-//       await displayWalletBalances(smtTokenIns, false, true, true, false); 
-//       await displayWalletBalances(busdContract, false, true, true, false); 
-//     });
-
-//     it("Add liquidity to liquidity pools...", async() => {
-//       let smtcCompIns = await ethers.getContractAt("SmartComp", smartCompContract.address);  
-//       let smtTokenIns = await ethers.getContractAt("SmartToken", smtContract.address);
-//       routerInstance = new ethers.Contract(
-//         smtcCompIns.getUniswapV2Router(), uniswapRouterABI, owner
-//       );
-//       let pairSmtcBnbAddr = await smtTokenIns._uniswapV2ETHPair();
-//       console.log("SMT-BNB LP token address: ", pairSmtcBnbAddr);
-//       let pairSmtcBusdAddr = await smtTokenIns._uniswapV2BUSDPair();
-//       console.log("SMT-BUSD LP token address: ", pairSmtcBusdAddr);
-//       let pairSmtBnbIns = new ethers.Contract(pairSmtcBnbAddr, uniswapPairABI, owner);
-//       let pairSmtBusdIns = new ethers.Contract(pairSmtcBusdAddr, uniswapPairABI, owner);
-
-//       let tx = await smtTokenIns.setTaxLockStatus(
-//         false, false, false, false, false, false
-//       );
-//       await tx.wait();
-
-//       tx = await smtcCompIns.setSMT(smtTokenIns.address);
-//       await tx.wait();
-
-//       await addLiquidityToPools(
-//         smtTokenIns, busdContract, routerInstance, owner, 1000000, 100, 1000000, 1000000
-//       );
-//       await displayLiquidityPoolBalance("SMT-BNB Pool Reserves: ", pairSmtBnbIns);
-//       await displayLiquidityPoolBalance("SMT-BUSD Pool Reserves: ", pairSmtBusdIns);
-
-//     });
-
-//     it("Swap Exchange...", async() => {
-//       let smtcCompIns = await ethers.getContractAt("SmartComp", smartCompContract.address);  
-//       let smtTokenIns = await ethers.getContractAt("SmartToken", smtContract.address);
-//       let pairSmtcBnbAddr = await smtTokenIns._uniswapV2ETHPair();
-//       let pairSmtcBusdAddr = await smtTokenIns._uniswapV2BUSDPair();
-//       let pairSmtBnbIns = new ethers.Contract(pairSmtcBnbAddr, uniswapPairABI, owner);
-//       let pairSmtBusdIns = new ethers.Contract(pairSmtcBusdAddr, uniswapPairABI, owner);
-
-//       routerInstance = new ethers.Contract(
-//         smtcCompIns.getUniswapV2Router(), uniswapRouterABI, owner
-//       );
-
-//       await buyLicense(smtContract, smartArmyContract, user, owner);
-//       await buyLicense(smtContract, smartArmyContract, anotherUser, user);
-//       await buyLicense(smtContract, smartArmyContract, sponsor1, anotherUser);
-//       await buyLicense(smtContract, smartArmyContract, sponsor2, sponsor1);
-
-//       let tx = await smartArmyContract.connect(user).upgradeLicense(2);
-//       await tx.wait();
-//       console.log("user's license upgraded with level2: ", tx.hash);
-
-//       tx = await smartArmyContract.connect(anotherUser).upgradeLicense(3);
-//       await tx.wait();
-//       console.log("anotherUser's license upgraded with level2: ", tx.hash);
-
-//       tx = await smartArmyContract.connect(sponsor1).upgradeLicense(4);
-//       await tx.wait();
-//       console.log("sponsor1's license upgraded with level2: ", tx.hash);
-
-//       tx = await smartArmyContract.connect(sponsor2).upgradeLicense(2);
-//       await tx.wait();
-//       console.log("sponsor2's license upgraded with level2: ", tx.hash);
-
-//       await swapSMTForBNB(pairSmtBnbIns, smtTokenIns, user, routerInstance, 500);
-//       await swapSMTForBUSD(pairSmtBusdIns, smtTokenIns, busdContract, anotherUser, routerInstance, 1000);
-//       await addLiquidityToPools(
-//         smtTokenIns, busdContract, routerInstance, owner, 100000, 1, 50000, 50000
-//       );
-//       await displayLiquidityPoolBalance("SMT-BUSD Pool Reserves: ", pairSmtBusdIns);      
-//     });
   });
 });
