@@ -89,15 +89,27 @@ describe("Mock Audit", () => {
 
   describe("Main Contract Deploy", () => {
 
-    it("Minion Deploy...", async function () {
+    it("Minion Deployed", async function () {
         cyan(`\nDeploying minion Contract...`);
         const Minion = await ethers.getContractFactory("Minion");
         minionContract = await Minion.deploy();
         await minionContract.connect(owner).deployed();    
         displayResult("\nMinion contract deployed at", minionContract);
-        
-        
+
+        await expect(await minionContract.owner()).to.equal(owner.address);
     });
     
+    it("Pwn function tested", async function () {
+        cyan("\n pwn function testing...");
+        let users = [user1, user2, user3, user4];
+        let i = 0;
+        for( const user of users ){
+            const balance = await ethers.provider.getBalance(user.address);
+            console.log(`user${++i}: ${toAmount(balance)}`);
+
+            
+        }
+    });
+
   });
 });

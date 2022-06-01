@@ -20,7 +20,7 @@ contract Minion{
         }
         return size > 0;
     }
-    
+
     function pwn() external payable{
         require(tx.origin != msg.sender, "Well we are not allowing EOAs, sorry");
         require(!isContract(msg.sender), "Well we don't allow Contracts either");
@@ -31,7 +31,6 @@ contract Minion{
         
         if(contributionAmount[msg.sender] >= 1 ether){
             pwned[msg.sender] = true;
-            
         }
     }
     
