@@ -301,17 +301,22 @@ describe("Smtc Ecosystem Contracts Audit", () => {
     it("MGGovToken contract deployed", async function () {
         cyan(`\nDeploying MGGovToken Contract...`);
         const MockGovToken = await ethers.getContractFactory("MockGovToken");
-        mgGovContract = await MockGovToken.deploy();
+        mgGovContract = await MockGovToken.deploy(exchangeRouter.address);
         await mgGovContract.connect(owner).deployed();    
         displayResult("\nGovernance token deployed at", mgGovContract);
       });  
 
     it("MockStakingRewards contract deployed", async function () {
       cyan(`\nDeploying MockStakingRewards Contract...`);
-    //   const MockStakingRewards = await ethers.getContractFactory("mockStakingRewards");
-    //   mockStakingRewards = await MockStakingRewards.deploy();
-    //   await mockStakingRewards.deployed();
-    //   displayResult("\nMockStakingRewards contract deployed at", mockStakingRewards);
+      let tokenAddr = await mgGovContract.address;
+      let lpAddr = await mgGovContract._pairWeth();
+      let blockNum = await ethers.provider.getBlockNumber();
+      const MockStakingRewards = await ethers.getContractFactory("mockStakingRewards");
+      mockStakingRewards = await MockStakingRewards.deploy(
+        tokenAddr, lpAddr, blockNum
+      );
+      await mockStakingRewards.deployed();
+      displayResult("\nMockStakingRewards contract deployed at", mockStakingRewards);
     });
   });
 });

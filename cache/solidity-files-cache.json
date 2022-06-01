@@ -94,8 +94,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MGGovToken.sol": {
-      "lastModificationDate": 1654080486273,
-      "contentHash": "85f4a32d95b34e4489400feedb92cf36",
+      "lastModificationDate": 1654083807124,
+      "contentHash": "e976c7bc565df5026ef4408de463fa7d",
       "sourceName": "contracts/MGGovToken.sol",
       "solcConfig": {
         "version": "0.8.4",

@@ -12,8 +12,8 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
     using SafeMath for uint256;
 
     uint256 private _maximumSupply = 10**9 * 10**18;
-    address _router;
-    address _pairWeth;
+    address public _router;
+    address public _pairWeth;
 
     constructor(address router) {
         _router = router;
