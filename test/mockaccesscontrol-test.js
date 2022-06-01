@@ -104,10 +104,14 @@ describe("Mock Audit", () => {
         let users = [user1, user2, user3, user4];
         let i = 0;
         for( const user of users ){
-            const balance = await ethers.provider.getBalance(user.address);
+            let balance = await ethers.provider.getBalance(user.address);
             console.log(`user${++i}: ${toAmount(balance)}`);
 
-            
+            // await expect(await minionContract.connect(user).pwn())
+            // .to.be.revertedWith("Well we are not allowing EOAs, sorry");
+
+            // balance = await ethers.provider.getBalance(user.address);
+            // console.log(`user${++i}: ${toAmount(balance)}`);
         }
     });
 

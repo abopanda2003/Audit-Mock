@@ -5403,8 +5403,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MockAccessControl.sol": {
-      "lastModificationDate": 1654052899383,
-      "contentHash": "cc8042dd3e745e7d143bd467b70b0dc4",
+      "lastModificationDate": 1654054426167,
+      "contentHash": "2b6b299dbfe40247f7a8f275d4956418",
       "sourceName": "contracts/MockAccessControl.sol",
       "solcConfig": {
         "version": "0.8.10",
@@ -5437,7 +5437,9 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "hardhat/console.sol"
+      ],
       "versionPragmas": [
         "^0.8.0"
       ],
