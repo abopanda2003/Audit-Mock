@@ -4,7 +4,7 @@ pragma solidity 0.8.4;
 // import '../interfaces/IUniswapPair.sol';
 // import '../interfaces/IUniswapFactory.sol';
 // import "./SafeMath.sol";
-import "./dexfactory.sol";
+import "./dexFactory.sol";
 import "../interfaces/IUniswapV2Factory.sol";
 
 library UniswapV2Library {

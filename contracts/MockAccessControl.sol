@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 import "hardhat/console.sol";
 
 contract Minion{
@@ -10,7 +10,7 @@ contract Minion{
     uint256 private constant MINIMUM_CONTRIBUTION = (1 ether)/10;
     uint256 private constant MAXIMUM_CONTRIBUTION = (1 ether)/5;
     
-    constructor(){
+    constructor() {
         owner = msg.sender;
     }
 

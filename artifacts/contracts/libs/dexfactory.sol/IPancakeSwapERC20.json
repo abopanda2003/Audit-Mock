@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
   "contractName": "IPancakeSwapERC20",
-  "sourceName": "contracts/libs/dexfactory.sol",
+  "sourceName": "contracts/libs/dexFactory.sol",
   "abi": [
     {
       "anonymous": false,

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
+import "hardhat/console.sol";
 
 library Address {
     /**
@@ -454,7 +455,7 @@ contract mockStakingRewards{
         address mockTokenContractAddress, 
         address mockLpTokenContractAddress, 
         uint256 startBlock_
-    ){
+    ) {
         require(
             mockTokenContractAddress != address(0),
             "token address cannot be zero"

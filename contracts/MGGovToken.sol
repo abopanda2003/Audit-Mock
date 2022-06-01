@@ -1,13 +1,28 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.6.12;
+pragma solidity 0.8.4;
 
-import "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol";
+// import "@pancakeswap/pancake-swap-lib/contracts/token/BEP20/BEP20.sol";
+import "./libs/BEP20.sol";
+import "./interfaces/IUniswapV2Router.sol";
+import "./interfaces/IUniswapV2Factory.sol";
+import "./interfaces/IUniswapV2Pair.sol";
 import "hardhat/console.sol";
 
 contract MockGovToken is BEP20("MockGovToken", "MGToken") {
-    uint256 private _maximumSupply = 10**9 * 10**18;
+    using SafeMath for uint256;
 
-    constructor() public {}
+    uint256 private _maximumSupply = 10**9 * 10**18;
+    address _router;
+    address _pairWeth;
+
+    constructor(address router) {
+        _router = router;
+        address factory = IUniswapV2Router02(_router).factory();
+        _pairWeth = IUniswapV2Factory(factory).createPair(
+            IUniswapV2Router02(_router).WETH(),
+            address(this)
+        );
+    }
 
     mapping(address => address) internal _delegates;
 
@@ -206,7 +221,7 @@ contract MockGovToken is BEP20("MockGovToken", "MGToken") {
         return uint32(n);
     }
 
-    function getChainId() internal pure returns (uint256) {
+    function getChainId() internal view returns (uint256) {
         uint256 chainId;
         assembly {
             chainId := chainid()

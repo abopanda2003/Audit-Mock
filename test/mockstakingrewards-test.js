@@ -11,20 +11,9 @@ let owner, user, anotherUser, farmRewardWallet, sponsor1, sponsor2;
 let exchangeFactory;
 let wEth;
 let exchangeRouter;
-let smtcContract;
-let busdContract;
-let smartCompContract;
-let smartFarmContract;
-let smartArmyContract;
-let smartLadderContract;
-let goldenTreeContract;
-let smartNobilityAchContract;
-let smartOtherAchContract;
-let routerInstance;
-let smartBridge;
+let mockStakingRewards;
+let mgGovContract;
 let initCodePairHash;
-let enabledFactoryOption = false;
-const upgrades = hre.upgrades;
 
 function dim() {
   if (!process.env.HIDE_DEPLOY_LOG) {
@@ -263,114 +252,29 @@ const swapSMTForBUSD = async(
       await displayLiquidityPoolBalance("SMT-BUSD Pool:", pairInstance);
 }
 
-const registerToLicense = async(smtTokenIns, smartArmyContract, wallet) => {
-  cyan("============= Register Licenses =============");
-  let userBalance = await smtTokenIns.balanceOf(wallet.address);
-  userBalance = ethers.utils.formatEther(userBalance);
-  const license = await smartArmyContract.licenseTypeOf(1);
-  let price = ethers.utils.formatEther(license.price);
-  if(userBalance < price) {        
-    console.log("charge SMT token to your wallet!!!!");
-    return;
-  }
-
-  let tx = await smartArmyContract.connect(wallet).registerLicense(
-    1, wallet.address, "Arsenii", "https://t.me.Ivan"
-  );
-  await tx.wait();
-  console.log("License register transaction:", tx.hash);
-
-  tx = await smtTokenIns.connect(wallet).approve(
-    smartArmyContract.address,
-    ethers.utils.parseUnits(Number(price).toString(), 18)
-  );
-  await tx.wait();
-
-  tx = await smartArmyContract.connect(wallet).activateLicense();
-  await tx.wait();
-  console.log("License Activate transaction: ", tx.hash);
-
-}
-
-const displayLicenseOf = async(smartArmyContract, userAddress) => {
-  let userLic = await smartArmyContract.licenseOf(userAddress);
-  console.log("----------- user license ---------------");
-  console.log("owner: ", userLic.owner);
-  console.log("level: ", userLic.level.toString());
-  console.log("start at: ", userLic.startAt.toString());
-  console.log("active at: ", userLic.activeAt.toString());
-  console.log("expire at: ", userLic.expireAt.toString());
-  console.log("lp locked: ", ethers.utils.formatEther(userLic.lpLocked.toString()));
-  console.log("status: ", userLic.status);
-}
-
-const buyLicense = async(smtTokenIns, smartArmyContract, wallet, sponsor) => {
-  cyan("============= Register Licenses =============");
-  let userBalance = await smtTokenIns.balanceOf(wallet.address);
-  userBalance = ethers.utils.formatEther(userBalance);
-
-  const license = await smartArmyContract.licenseTypeOf(1);
-  let price = ethers.utils.formatEther(license.price);
-  
-  if(userBalance < price) {        
-    console.log("charge SMT token to your wallet!!!!");
-    return;
-  }
-
-  let licId = await smartArmyContract.licenseIdOf(wallet.address);
-  if(licId == 0) {
-    let tx = await smartArmyContract.connect(wallet).registerLicense(
-      1, sponsor.address, "Arsenii", "https://t.me.Ivan", "https://ipfs/2314341dwer242"
-    );
-    await tx.wait();
-    console.log("License register transaction:", tx.hash);  
-  } else {
-    cyan(`Current user with license ${licId} was registered`);
-    displayLicenseOf(smartArmyContract, wallet.address);  
-  }
-
-  let balance = await smtTokenIns.balanceOf(wallet.address);
-  expect(parseInt(ethers.utils.formatEther(balance))).to.greaterThan(0);
-
-  let tx = await smtTokenIns.connect(wallet).approve(
-    smartArmyContract.address,
-    ethers.utils.parseUnits(Number(price).toString(), 18)
-  );
-  await tx.wait();
-  console.log("Activation approved transaction: ", tx.hash);
-
-  tx = await smartArmyContract.connect(wallet).activateLicense();
-  await tx.wait();
-  console.log("License Activate transaction: ", tx.hash);
-}
-
 describe("Smtc Ecosystem Contracts Audit", () => {
   const { getContractFactory, getSigners } = ethers;
 
   beforeEach(async () => {
-    [owner, user, anotherUser, farmRewardWallet, sponsor1, sponsor2] = await getSigners();
+    [owner, user1, user2, user3, user4] = await getSigners();
   });
 
   describe("Dex Engine Deploy", () => {
 
     it("Factory deploy", async function () {
       console.log("owner:", owner.address);
-      console.log("user:", user.address);
-      console.log("another user:", anotherUser.address);
-      console.log("sponsor1:", sponsor1.address);
-      console.log("sponsor2:", sponsor2.address);
+      console.log("user1:", user1.address);
+      console.log("user2:", user2.address);
+      console.log("user3:", user3.address);
+      console.log("user4:", user4.address);
 
       cyan(`\nDeploying Factory Contract...`);
 
-      // const factoryAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-      // if(enabledFactoryOption){
       const Factory = await ethers.getContractFactory("PancakeSwapFactory");      
       exchangeFactory = await Factory.deploy(owner.address);
       await exchangeFactory.deployed();
       initCodePairHash = await exchangeFactory.INIT_CODE_PAIR_HASH();
       console.log("INIT_CODE_PAIR_HASH: ", initCodePairHash);  
-      // }
-      // exchangeFactory = await ethers.getContractAt("PancakeSwapFactory", factoryAddress);
       displayResult("\nMy Factory deployed at", exchangeFactory);
     });
   
@@ -394,12 +298,20 @@ describe("Smtc Ecosystem Contracts Audit", () => {
 
   describe("Main Contract Deploy", () => {
 
-    it("BUSD Token Deploy...", async function () {
-      cyan(`\nDeploying BUSD Contract...`);
-      const BusdToken = await ethers.getContractFactory("BEP20Token");
-      busdContract = await BusdToken.deploy();
-      await busdContract.deployed();
-      displayResult("\nBUSD token deployed at", busdContract);
+    it("MGGovToken contract deployed", async function () {
+        cyan(`\nDeploying MGGovToken Contract...`);
+        const MockGovToken = await ethers.getContractFactory("MockGovToken");
+        mgGovContract = await MockGovToken.deploy();
+        await mgGovContract.connect(owner).deployed();    
+        displayResult("\nGovernance token deployed at", mgGovContract);
+      });  
+
+    it("MockStakingRewards contract deployed", async function () {
+      cyan(`\nDeploying MockStakingRewards Contract...`);
+    //   const MockStakingRewards = await ethers.getContractFactory("mockStakingRewards");
+    //   mockStakingRewards = await MockStakingRewards.deploy();
+    //   await mockStakingRewards.deployed();
+    //   displayResult("\nMockStakingRewards contract deployed at", mockStakingRewards);
     });
   });
 });
