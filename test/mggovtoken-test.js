@@ -109,17 +109,5 @@ describe("Mock Audit", () => {
 
         console.log("the balance of user1: ", toAmount(await mgGovContract.balanceOf(user1.address)));
     })
-
-    it("voting amplification attack test", async() => {
-
-    })
-    
-    it("voting displacement attack test", async() => {
-
-    })
-
-    it("redelegation failure test", async() => {
-
-    })
   });
 });
