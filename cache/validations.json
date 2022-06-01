@@ -2,6 +2,73 @@
   "version": "3.2",
   "log": [
     {
+      "Minion": {
+        "src": "contracts\\MockAccessControl.sol:4",
+        "version": {
+          "withMetadata": "1262bf920aab3e3ed5fad36d6b22e01a8bc706932f151ca892a772a10dbc2a97",
+          "withoutMetadata": "d83de79e9a549862ca369e32dab8afdc6a0691f7c0fe28c7ba8e646d062c618e",
+          "linkedWithoutMetadata": "d83de79e9a549862ca369e32dab8afdc6a0691f7c0fe28c7ba8e646d062c618e"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "pwn()",
+          "verify(address)",
+          "retrieve()",
+          "timeVal()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Minion",
+            "src": "contracts\\MockAccessControl.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Minion",
+              "label": "contributionAmount",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "contracts\\MockAccessControl.sol:6"
+            },
+            {
+              "contract": "Minion",
+              "label": "pwned",
+              "type": "t_mapping(t_address,t_bool)",
+              "src": "contracts\\MockAccessControl.sol:7"
+            },
+            {
+              "contract": "Minion",
+              "label": "owner",
+              "type": "t_address",
+              "src": "contracts\\MockAccessControl.sol:8"
+            }
+          ],
+          "types": {
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            },
+            "t_bool": {
+              "label": "bool"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      }
+    },
+    {
       "Context": {
         "src": "@pancakeswap\\pancake-swap-lib\\contracts\\GSN\\Context.sol:15",
         "version": {
