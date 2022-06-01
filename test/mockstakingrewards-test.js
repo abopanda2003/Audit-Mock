@@ -398,7 +398,7 @@ describe("Smtc Ecosystem Contracts Audit", () => {
       cyan(`\nDeploying BUSD Contract...`);
       const BusdToken = await ethers.getContractFactory("BEP20Token");
       busdContract = await BusdToken.deploy();
-      await busdContract.deployed();    
+      await busdContract.deployed();
       displayResult("\nBUSD token deployed at", busdContract);
     });
   });
