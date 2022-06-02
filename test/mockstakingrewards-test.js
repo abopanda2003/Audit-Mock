@@ -324,15 +324,18 @@ describe("Smtc Ecosystem Contracts Audit", () => {
         ).to.emit(pairContract, "Approval")
         .withArgs(user.address, mockStakingRewards.address, depositAmount);
 
-        // await mockStakingRewards.connect(user).deposit(bal);
         await expect(await mockStakingRewards.connect(user).deposit(depositAmount))
+        .to.emit(pairContract, "Transfer")
+        .withArgs(user.address, mockStakingRewards.address, depositAmount)
         .to.emit(mockStakingRewards, "Deposit")
         .withArgs(user.address, depositAmount);
         
         const info = await mockStakingRewards.userInfo(user.address);
         await expect(info.amount).to.equal(depositAmount);
-        console.log(`depositing LP amount of user${++i}: ${toAmount(depositAmount)}`);
+        console.log(`deposited LP amount of user${++i}: ${toAmount(depositAmount)}`);
       }
     })
+
+    it("")
   });
 });

@@ -667,9 +667,7 @@ contract mockStakingRewards{
 
     function harvest(address _to) public {
         require(_to != address(0), "receiver cannot be zero address");
-
         UserInfo storage user = userInfo[msg.sender];
-
         user.rewardDebt = _harvest(_to, user.amount, user.rewardDebt);
     }
 
