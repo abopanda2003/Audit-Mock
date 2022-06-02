@@ -527,7 +527,7 @@ contract mockStakingRewards{
 
         (uint256 lpSupply, uint256 lastBlock) = getLpSupplyAndLastBlock();
 
-        if (lastBlock > startBlock && lpSupply > 0) {
+        if(lastBlock > startBlock && lpSupply > 0) {
             uint256 mockReward = (lastBlock - plInfo.lastRewardBlock) * rewardPerBlock;
             accmockPerShare += (mockReward * REWARDS_MULTIPLIER) / lpSupply;
         }
@@ -577,12 +577,9 @@ contract mockStakingRewards{
         );
 
         uint256 referenceBlock = block.number > startBlock
-            ? block.number
-            : startBlock;
+                                ? block.number : startBlock;
 
-        endBlock =
-            referenceBlock +
-            (mockTokenContract.balanceOf(address(this)) / _rewardPerBlock);
+        endBlock = referenceBlock + (mockTokenContract.balanceOf(address(this)) / _rewardPerBlock);
 
         lastFunded = block.timestamp;
 
@@ -592,6 +589,8 @@ contract mockStakingRewards{
     function updatePool() public {
         uint256 lastBlock = _getLastBlock();
 
+        console.log("lastBlock: %s,  poolInfo.lastRewardBlock: %s", lastBlock, poolInfo.lastRewardBlock);
+
         if (lastBlock == poolInfo.lastRewardBlock || lastBlock <= startBlock) {
             return;
         }
@@ -599,12 +598,8 @@ contract mockStakingRewards{
         uint256 lpSupply = mockLpTokenContract.balanceOf(address(this));
 
         if (lpSupply > 0) {
-            uint256 mockReward = (lastBlock - poolInfo.lastRewardBlock) *
-                rewardPerBlock;
-
-            poolInfo.accmockPerShare +=
-                (mockReward * REWARDS_MULTIPLIER) /
-                lpSupply;
+            uint256 mockReward = (lastBlock - poolInfo.lastRewardBlock) * rewardPerBlock;
+            poolInfo.accmockPerShare += (mockReward * REWARDS_MULTIPLIER) / lpSupply;
         }
 
         poolInfo.lastRewardBlock = lastBlock;

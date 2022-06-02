@@ -313,6 +313,27 @@ describe("Smtc Ecosystem Contracts Audit", () => {
         }
     });
 
+    it("Fund function tested", async() => {
+      console.log("token balance of owner: ", toAmount(await mgGovToken.balanceOf(owner.address)));
+      const MAX_FUND = parseAmount(10000000);
+      const fundAmount = parseAmount(95000);
+      const rewardPerBlock = parseAmount(1);
+      const endBlock = 95024;
+
+      await expect(await mockStakingRewards.connect(owner).setMaxFundAmount(MAX_FUND))
+      .to.emit(mockStakingRewards, "MaxFundSet").withArgs(MAX_FUND);
+
+      await mgGovToken.connect(owner).approve(mockStakingRewards.address, fundAmount);
+
+      await expect(await mockStakingRewards.connect(owner).fund(fundAmount, rewardPerBlock))
+      .to.emit(mgGovToken, "Transfer")
+      .withArgs(owner.address, mockStakingRewards.address, fundAmount)
+      .to.emit(mockStakingRewards, "Funding")
+      .withArgs(owner.address, fundAmount, rewardPerBlock, endBlock);
+
+      console.log("last funded: ", await mockStakingRewards.lastFunded());
+    })
+
     it("Deposit function tested", async() => {
       const pairLp = await mgGovToken._pairWeth();
       const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
@@ -334,10 +355,6 @@ describe("Smtc Ecosystem Contracts Audit", () => {
         await expect(info.amount).to.equal(depositAmount);
         console.log(`deposited LP amount of user${++i}: ${toAmount(depositAmount)}`);
       }
-    })
-
-    it("Fund function tested", async() => {
-            
     })
   });
 });
