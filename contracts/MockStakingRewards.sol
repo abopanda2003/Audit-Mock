@@ -528,9 +528,7 @@ contract mockStakingRewards{
         (uint256 lpSupply, uint256 lastBlock) = getLpSupplyAndLastBlock();
 
         if (lastBlock > startBlock && lpSupply > 0) {
-            uint256 mockReward = (lastBlock - plInfo.lastRewardBlock) *
-                rewardPerBlock;
-
+            uint256 mockReward = (lastBlock - plInfo.lastRewardBlock) * rewardPerBlock;
             accmockPerShare += (mockReward * REWARDS_MULTIPLIER) / lpSupply;
         }
     }
@@ -563,8 +561,7 @@ contract mockStakingRewards{
     // sanity check with maxFundAmount
     // TODO: additional sanity checks like 10 min moratorium on deposits?
     function fund(uint256 _amount, uint256 _rewardPerBlock)
-        external
-        onlyAuthorized
+        external onlyAuthorized
     {
         require(_amount <= maxFundAmount, "amount exceeds max allowable");
         require(_rewardPerBlock < _amount, "reward must be less than amount");

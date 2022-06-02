@@ -257,7 +257,7 @@ describe("Smtc Ecosystem Contracts Audit", () => {
       displayResult("\nMockStakingRewards contract deployed at", mockStakingRewards);
     });
 
-    it("Add liquidity for MGGovToken", async() => {
+    it("Added liquidity for MGGovToken", async() => {
         const pairLp = await mgGovToken._pairWeth();
         const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
         const tokenAmount = parseAmount(5000);
@@ -313,7 +313,7 @@ describe("Smtc Ecosystem Contracts Audit", () => {
         }
     });
 
-    it("Deposit function test", async() => {
+    it("Deposit function tested", async() => {
       const pairLp = await mgGovToken._pairWeth();
       const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
       const depositAmount = parseAmount(50);
@@ -336,6 +336,8 @@ describe("Smtc Ecosystem Contracts Audit", () => {
       }
     })
 
-    it("")
+    it("Fund function tested", async() => {
+            
+    })
   });
 });
