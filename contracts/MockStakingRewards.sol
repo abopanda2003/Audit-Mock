@@ -382,6 +382,7 @@ library SafeERC20 {
         }
     }
 }
+
 contract mockStakingRewards{
     struct UserInfo {
         uint256 amount; // mock LP tokens user has deposited.

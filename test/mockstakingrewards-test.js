@@ -1,18 +1,18 @@
-const { expect } = require("chai");
-const { ethers, getNamedAccounts, deployments } = require("hardhat");
+const { expect, use } = require("chai");
+const { ethers } = require("hardhat");
 const chalk = require('chalk');
-const { deploy } = deployments;
+const { BigNumber, constants: { MaxUint256, AddressZero } } = require("ethers");
 
-// const uniswapRouterABI = require("../artifacts/contracts/interfaces/IUniswapRouter.sol/IUniswapV2Router02.json").abi;
+const wethABI = require("../artifacts/contracts/libs/weth.sol/WETH.json").abi;
 const uniswapRouterABI = require("../artifacts/contracts/libs/dexRouter.sol/IPancakeSwapRouter.json").abi;
 const uniswapPairABI = require("../artifacts/contracts/libs/dexfactory.sol/IPancakeSwapPair.json").abi;
 
-let owner, user, anotherUser, farmRewardWallet, sponsor1, sponsor2;
+let owner, user1, user2, user3, user4, users;
 let exchangeFactory;
 let wEth;
 let exchangeRouter;
 let mockStakingRewards;
-let mgGovContract;
+let mgGovToken;
 let initCodePairHash;
 
 function dim() {
@@ -113,66 +113,11 @@ const displayLiquidityPoolBalance = async(comment, poolInstance) => {
   console.log("SMT Price: $", busdAmount/smtAmount);
 }
 
-const addLiquidityToPools = async(
-  tokenA, tokenB,
-  routerInstance, walletIns,
-  smtAmount1, bnbAmount, 
-  smtAmount2, busdAmount
-) => {
-  ///////////////////  SMT-BNB Add Liquidity /////////////////////
-  let tx = await tokenA.connect(walletIns).approve(
-    routerInstance.address,
-    ethers.utils.parseUnits(Number(smtAmount1+100).toString(),18)
-  );
-  await tx.wait();
-
-  console.log("approve tx: ", tx.hash);
-
-  tx = await routerInstance.connect(walletIns).addLiquidityETH(
-    tokenA.address,
-    ethers.utils.parseUnits(Number(smtAmount1).toString(), 18),
-    0,
-    0,
-    walletIns.address,
-    "111111111111111111111",
-    {value : ethers.utils.parseUnits(Number(bnbAmount).toString(), 18)}
-  );
-  await tx.wait();
-  console.log("SMT-BNB add liquidity tx: ", tx.hash);
-
-  ///////////////////  SMT-BUSD Add Liquidity /////////////////////
-
-  tx = await tokenA.connect(walletIns).approve(
-    routerInstance.address,
-    ethers.utils.parseUnits(Number(smtAmount2+100).toString(), 18)
-  );
-  await tx.wait();
-
-  tx = await tokenB.connect(walletIns).approve(
-    routerInstance.address,
-    ethers.utils.parseUnits(Number(busdAmount+100).toString(), 18)
-  );
-  await tx.wait();
-
-  tx = await routerInstance.connect(walletIns).addLiquidity(
-    tokenA.address,
-    tokenB.address,
-    ethers.utils.parseUnits(Number(smtAmount2).toString(), 18),
-    ethers.utils.parseUnits(Number(busdAmount).toString(), 18),
-    0,
-    0,
-    walletIns.address,
-    "111111111111111111111"
-  );
-  await tx.wait();
-  console.log("SMT-BUSD add liquidity tx: ", tx.hash);
-}
-
 const swapSMTForBNB = async(
   pairInstance,
   inputTokenIns, 
   wallet,
-  routerInstance,
+  exchangeRouter,
   swapAmount
 ) => {
       console.log("----------------------- Swap SMT For BNB ---------------------");
@@ -182,19 +127,19 @@ const swapSMTForBNB = async(
       console.log(">>> old balance: ", ethers.utils.formatEther(balance));
 
       let tx = await inputTokenIns.connect(wallet).approve(
-          routerInstance.address,
+          exchangeRouter.address,
           ethers.utils.parseUnits(Number(swapAmount+100).toString(), 18)
       );
       await tx.wait();
       let amountIn = ethers.utils.parseUnits(Number(swapAmount).toString(), 18);
-      let wEth = await routerInstance.WETH();
-      let amountsOut = await routerInstance.getAmountsOut(
+      let wEth = await exchangeRouter.WETH();
+      let amountsOut = await exchangeRouter.getAmountsOut(
         amountIn,
         [ inputTokenIns.address, wEth ]
       );
       console.log("excepted swap balance: ", ethers.utils.formatEther(amountsOut[1]));
 
-      tx = await routerInstance.connect(wallet).swapExactTokensForETHSupportingFeeOnTransferTokens(
+      tx = await exchangeRouter.connect(wallet).swapExactTokensForETHSupportingFeeOnTransferTokens(
         amountIn, 0,
         [ inputTokenIns.address, wEth ],
         wallet.address,
@@ -206,50 +151,26 @@ const swapSMTForBNB = async(
       await displayLiquidityPoolBalance("SMT-BNB Pool:", pairInstance);
 }
 
-const swapSMTForBUSD = async(
-  pairInstance,
-  inputTokenIns,
-  outTokenIns,
-  wallet,
-  routerInstance,
-  swapAmount
-) => {
-      console.log("----------------------- Swap SMT For BUSD ---------------------");
-      await displayLiquidityPoolBalance("SMT-BUSD Pool:", pairInstance);
+const ONE = ethers.BigNumber.from(1);
+const TWO = ethers.BigNumber.from(2);
 
-      let balance = await outTokenIns.balanceOf(wallet.address);
-      console.log(">>> old balance by BUSD: ", ethers.utils.formatEther(balance));
+function sqrtBN(value) {
+    x = ethers.BigNumber.from(value);
+    let z = x.add(ONE).div(TWO);
+    let y = x;
+    while (z.sub(y).isNegative()) {
+        y = z;
+        z = x.div(z).add(z).div(TWO);
+    }
+    return y;
+}
 
-      let tx = await inputTokenIns.connect(wallet).approve(
-          routerInstance.address,
-          ethers.utils.parseUnits(Number(swapAmount+100).toString(), 18)
-      );
-      await tx.wait();
-      let amountIn = ethers.utils.parseUnits(Number(swapAmount).toString(), 18);
-      let amountsOut = await routerInstance.getAmountsOut(
-        amountIn,
-        [
-          inputTokenIns.address, 
-          outTokenIns.address
-        ]
-      );
-      console.log("excepted swap balance: ", ethers.utils.formatEther(amountsOut[1]));
+const toAmount = (amount) => {
+    return ethers.utils.formatEther(amount);
+}
 
-      tx = await routerInstance.connect(wallet).swapExactTokensForTokensSupportingFeeOnTransferTokens(
-        amountIn,
-        0,
-        [
-          inputTokenIns.address,
-          outTokenIns.address
-        ],
-        wallet.address,
-        "99000000000000000000"
-      );
-      await tx.wait();
-
-      balance = await outTokenIns.balanceOf(wallet.address);
-      console.log(">>> new balance by BUSD: ", ethers.utils.formatEther(balance));
-      await displayLiquidityPoolBalance("SMT-BUSD Pool:", pairInstance);
+const parseAmount = (amount) => {
+    return ethers.utils.parseEther(amount.toString());
 }
 
 describe("Smtc Ecosystem Contracts Audit", () => {
@@ -257,16 +178,17 @@ describe("Smtc Ecosystem Contracts Audit", () => {
 
   beforeEach(async () => {
     [owner, user1, user2, user3, user4] = await getSigners();
+    // users = [user1, user2, user3, user4];
+    users = [user1];
   });
 
   describe("Dex Engine Deploy", () => {
 
     it("Factory deploy", async function () {
-      console.log("owner:", owner.address);
-      console.log("user1:", user1.address);
-      console.log("user2:", user2.address);
-      console.log("user3:", user3.address);
-      console.log("user4:", user4.address);
+      green(`owner: ${owner.address}`);
+      let i=0;
+      for( const user of users )
+        console.log(`user${++i}: ${user.address}`);
 
       cyan(`\nDeploying Factory Contract...`);
 
@@ -293,7 +215,6 @@ describe("Smtc Ecosystem Contracts Audit", () => {
       await exchangeRouter.deployed();
       displayResult("\nMy Router deployed at", exchangeRouter);
     });
-
   });
 
   describe("Main Contract Deploy", () => {
@@ -301,15 +222,33 @@ describe("Smtc Ecosystem Contracts Audit", () => {
     it("MGGovToken contract deployed", async function () {
         cyan(`\nDeploying MGGovToken Contract...`);
         const MockGovToken = await ethers.getContractFactory("MockGovToken");
-        mgGovContract = await MockGovToken.deploy(exchangeRouter.address);
-        await mgGovContract.connect(owner).deployed();    
-        displayResult("\nGovernance token deployed at", mgGovContract);
-      });  
+        mgGovToken = await MockGovToken.deploy(exchangeRouter.address);
+        await mgGovToken.connect(owner).deployed();    
+        displayResult("\nGovernance token deployed at", mgGovToken);
+
+        await expect(await mgGovToken._router()).to.equal(exchangeRouter.address);
+        await expect(await mgGovToken.owner()).to.equal(owner.address);
+
+        users.push(owner);
+        let i=0;
+        for(const user of users) {
+            await mgGovToken.connect(owner).mintFunc(
+                user.address,
+                parseAmount(100000)
+            );
+            const balance = await mgGovToken.balanceOf(user.address);
+            // console.log(`user${++i}: ${toAmount(balance)}`);
+        }
+        await mgGovToken.connect(owner).mintFunc(
+            owner.address,
+            parseAmount(10000000)
+        );
+    });  
 
     it("MockStakingRewards contract deployed", async function () {
       cyan(`\nDeploying MockStakingRewards Contract...`);
-      let tokenAddr = await mgGovContract.address;
-      let lpAddr = await mgGovContract._pairWeth();
+      let tokenAddr = await mgGovToken.address;
+      let lpAddr = await mgGovToken._pairWeth();
       let blockNum = await ethers.provider.getBlockNumber();
       const MockStakingRewards = await ethers.getContractFactory("mockStakingRewards");
       mockStakingRewards = await MockStakingRewards.deploy(
@@ -317,6 +256,57 @@ describe("Smtc Ecosystem Contracts Audit", () => {
       );
       await mockStakingRewards.deployed();
       displayResult("\nMockStakingRewards contract deployed at", mockStakingRewards);
+    });
+
+    it("Add liquidity for MGGovToken", async() => {
+        const pairLp = await mgGovToken._pairWeth();
+        const tokenAmount = parseAmount(5000);
+        const ethAmount = parseAmount(10);
+        const wethContract = new ethers.Contract(
+          await exchangeRouter.WETH(), wethABI, owner
+        );
+        const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
+        const MINIMUM_LIQUIDITY = BigNumber.from(10).pow(3);
+        const lpNum = sqrtBN(tokenAmount.mul(ethAmount)).sub(MINIMUM_LIQUIDITY);
+        const addrToken0 = await pairContract.token0();
+
+        // users.push(owner);
+        for( const user of users ){
+            await expect(
+                await mgGovToken.connect(user).approve(
+                    exchangeRouter.address,
+                    tokenAmount
+                )
+            ).to.emit(mgGovToken, "Approval")
+            .withArgs(user.address, exchangeRouter.address, tokenAmount);
+        
+            await expect(
+                await exchangeRouter.connect(user).addLiquidityETH(
+                    mgGovToken.address, parseAmount(5000), 0, 0, 
+                    user.address, "111111111111111111111",
+                    {value : ethAmount}
+                )
+            ).to.emit(mgGovToken, "Transfer")
+            .withArgs(user.address, pairLp, tokenAmount)
+            .to.emit(wethContract, "Deposit")
+            .withArgs(exchangeRouter.address, ethAmount)
+            .to.emit(wethContract, "Transfer")
+            .withArgs(exchangeRouter.address, pairLp, ethAmount)
+            .to.emit(pairContract, "Transfer")
+            .withArgs(AddressZero, user.address, lpNum)
+            .to.emit(pairContract, 'Sync')
+            .withArgs(
+                addrToken0 === mgGovToken.address ? tokenAmount : ethAmount,
+                addrToken0 === mgGovToken.address ? ethAmount : tokenAmount
+            )
+            .to.emit(pairContract, 'Mint')
+            .withArgs(
+              exchangeRouter.address,
+              addrToken0 === mgGovToken.address ? tokenAmount : ethAmount,
+              addrToken0 === mgGovToken.address ? ethAmount : tokenAmount
+            );
+            
+        }    
     });
   });
 });

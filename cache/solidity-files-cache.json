@@ -94,7 +94,7 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MGGovToken.sol": {
-      "lastModificationDate": 1654083807124,
+      "lastModificationDate": 1654125657586,
       "contentHash": "e976c7bc565df5026ef4408de463fa7d",
       "sourceName": "contracts/MGGovToken.sol",
       "solcConfig": {
@@ -235,8 +235,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MockStakingRewards.sol": {
-      "lastModificationDate": 1654076584378,
-      "contentHash": "753b6ee7a3d7b0803db64e87d9e6e34c",
+      "lastModificationDate": 1654113642351,
+      "contentHash": "8f342f0ee16162ed8ceb8b919659c0f7",
       "sourceName": "contracts/MockStakingRewards.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -591,7 +591,7 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\dexRouter.sol": {
-      "lastModificationDate": 1654076658814,
+      "lastModificationDate": 1654138056738,
       "contentHash": "6c09ce479b30da36cea41e869e27ac2b",
       "sourceName": "contracts/libs/dexRouter.sol",
       "solcConfig": {
@@ -645,8 +645,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\dexFactory.sol": {
-      "lastModificationDate": 1654076669942,
-      "contentHash": "c706b148cd70972c653e90f61d7d2332",
+      "lastModificationDate": 1654138904007,
+      "contentHash": "5bc511facc1593353f92b1479e11ccb3",
       "sourceName": "contracts/libs/dexFactory.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -1004,8 +1004,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\libs\\weth.sol": {
-      "lastModificationDate": 1652692129539,
-      "contentHash": "cebc4d754fd019772fa871c97e5c46ef",
+      "lastModificationDate": 1654129340502,
+      "contentHash": "fed34b65bb1778a6f05d678183296a3b",
       "sourceName": "contracts/libs/weth.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -1038,7 +1038,9 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "hardhat/console.sol"
+      ],
       "versionPragmas": [
         "^0.8.4"
       ],

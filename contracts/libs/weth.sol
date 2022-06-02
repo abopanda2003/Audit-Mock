@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: UNLICENSED
 // pragma solidity ^0.6.12;
 pragma solidity ^0.8.4;
+import "hardhat/console.sol";
 
 contract WETH {
     string public name     = "Wrapped ETH";

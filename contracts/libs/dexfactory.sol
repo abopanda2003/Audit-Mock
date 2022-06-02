@@ -352,7 +352,9 @@ contract PancakeSwapPair is IPancakeSwapPair, PancakeSwapERC20 {
                     uint numerator = _totalSupply.mul(rootK.sub(rootKLast));
                     uint denominator = rootK.mul(5).add(rootKLast);
                     uint liquidity = numerator / denominator;
-                    if (liquidity > 0) _mint(feeTo, liquidity);
+                    if (liquidity > 0) {
+                        _mint(feeTo, liquidity);
+                    }
                 }
             }
         } else if (kLast11 != 0) {
