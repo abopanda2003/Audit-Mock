@@ -707,7 +707,6 @@ contract mockStakingRewards{
 
             if (pendingmock > 0) {
                 _mockRewardsTransfer(_to, pendingmock);
-
                 emit Harvest(msg.sender, pendingmock);
             }
         }

@@ -178,8 +178,7 @@ describe("Smtc Ecosystem Contracts Audit", () => {
 
   beforeEach(async () => {
     [owner, user1, user2, user3, user4] = await getSigners();
-    // users = [user1, user2, user3, user4];
-    users = [user1];
+    users = [user1, user2, user3, user4];
   });
 
   describe("Dex Engine Deploy", () => {
@@ -260,17 +259,16 @@ describe("Smtc Ecosystem Contracts Audit", () => {
 
     it("Add liquidity for MGGovToken", async() => {
         const pairLp = await mgGovToken._pairWeth();
+        const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
         const tokenAmount = parseAmount(5000);
         const ethAmount = parseAmount(10);
         const wethContract = new ethers.Contract(
           await exchangeRouter.WETH(), wethABI, owner
         );
-        const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
         const MINIMUM_LIQUIDITY = BigNumber.from(10).pow(3);
-        const lpNum = sqrtBN(tokenAmount.mul(ethAmount)).sub(MINIMUM_LIQUIDITY);
         const addrToken0 = await pairContract.token0();
-
-        // users.push(owner);
+        users.push(owner);
+        let i = 0;
         for( const user of users ){
             await expect(
                 await mgGovToken.connect(user).approve(
@@ -280,24 +278,29 @@ describe("Smtc Ecosystem Contracts Audit", () => {
             ).to.emit(mgGovToken, "Approval")
             .withArgs(user.address, exchangeRouter.address, tokenAmount);
         
-            await expect(
-                await exchangeRouter.connect(user).addLiquidityETH(
-                    mgGovToken.address, parseAmount(5000), 0, 0, 
-                    user.address, "111111111111111111111",
-                    {value : ethAmount}
-                )
-            ).to.emit(mgGovToken, "Transfer")
+            let tx = await exchangeRouter.connect(user).addLiquidityETH(
+              mgGovToken.address, parseAmount(5000), 0, 0, 
+              user.address, "111111111111111111111",
+              {value : ethAmount}
+            );
+            await expect(tx)
+            .to.emit(mgGovToken, "Transfer")
             .withArgs(user.address, pairLp, tokenAmount)
             .to.emit(wethContract, "Deposit")
             .withArgs(exchangeRouter.address, ethAmount)
             .to.emit(wethContract, "Transfer")
             .withArgs(exchangeRouter.address, pairLp, ethAmount)
             .to.emit(pairContract, "Transfer")
-            .withArgs(AddressZero, user.address, lpNum)
+            .withArgs(
+              AddressZero, 
+              user.address,
+              i === 0 ? sqrtBN(tokenAmount.mul(ethAmount)).sub(MINIMUM_LIQUIDITY):
+                        sqrtBN(tokenAmount.mul(ethAmount))
+            )
             .to.emit(pairContract, 'Sync')
             .withArgs(
-                addrToken0 === mgGovToken.address ? tokenAmount : ethAmount,
-                addrToken0 === mgGovToken.address ? ethAmount : tokenAmount
+                addrToken0 === mgGovToken.address ? tokenAmount.mul(i+1) : ethAmount.mul(i+1),
+                addrToken0 === mgGovToken.address ? ethAmount.mul(i+1) : tokenAmount.mul(i+1)
             )
             .to.emit(pairContract, 'Mint')
             .withArgs(
@@ -305,8 +308,31 @@ describe("Smtc Ecosystem Contracts Audit", () => {
               addrToken0 === mgGovToken.address ? tokenAmount : ethAmount,
               addrToken0 === mgGovToken.address ? ethAmount : tokenAmount
             );
-            
-        }    
+            const id = (i < 4)? `user${++i}`: "owner";
+            console.log(`LP amount of ${id}: ${toAmount(await pairContract.balanceOf(user.address))}`);
+        }
     });
+
+    it("Deposit function test", async() => {
+      const pairLp = await mgGovToken._pairWeth();
+      const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
+      const depositAmount = parseAmount(50);
+      let i = 0;
+      for(const user of users) {
+        await expect(
+          await pairContract.connect(user).approve(mockStakingRewards.address, depositAmount)
+        ).to.emit(pairContract, "Approval")
+        .withArgs(user.address, mockStakingRewards.address, depositAmount);
+
+        // await mockStakingRewards.connect(user).deposit(bal);
+        await expect(await mockStakingRewards.connect(user).deposit(depositAmount))
+        .to.emit(mockStakingRewards, "Deposit")
+        .withArgs(user.address, depositAmount);
+        
+        const info = await mockStakingRewards.userInfo(user.address);
+        await expect(info.amount).to.equal(depositAmount);
+        console.log(`depositing LP amount of user${++i}: ${toAmount(depositAmount)}`);
+      }
+    })
   });
 });
