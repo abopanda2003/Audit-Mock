@@ -668,10 +668,10 @@ contract mockStakingRewards{
 
     // used to sweep token dust and unclaimed tokens
     function sweep() external onlyAuthorized {
-        // require(
-        //     block.timestamp > lastFunded + 90 days,
-        //     "90 days since last fund required"
-        // );
+        require(
+            block.timestamp > lastFunded + 90 days,
+            "90 days since last fund required"
+        );
 
         mockTokenContract.safeTransfer(
             msg.sender,
