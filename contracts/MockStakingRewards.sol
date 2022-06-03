@@ -589,8 +589,6 @@ contract mockStakingRewards{
     function updatePool() public {
         uint256 lastBlock = _getLastBlock();
 
-        // console.log("lastBlock: %s,  poolInfo.lastRewardBlock: %s", lastBlock, poolInfo.lastRewardBlock);
-
         if (lastBlock == poolInfo.lastRewardBlock || lastBlock <= startBlock) {
             return;
         }
