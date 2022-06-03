@@ -483,7 +483,7 @@ contract mockStakingRewards{
     }
 
     function getUserDepositedAmount(address _user)
-        external
+        public
         view
         returns (uint256)
     {
@@ -491,7 +491,7 @@ contract mockStakingRewards{
     }
 
     function getUserPendingReward(address _user)
-        external
+        public
         view
         returns (uint256)
     {
@@ -505,7 +505,7 @@ contract mockStakingRewards{
             user.rewardDebt;
     }
 
-    function getTotalPending() external view returns (uint256) {
+    function getTotalPending() public view returns (uint256) {
         if (block.number <= startBlock) {
             return 0;
         }
@@ -589,7 +589,7 @@ contract mockStakingRewards{
     function updatePool() public {
         uint256 lastBlock = _getLastBlock();
 
-        console.log("lastBlock: %s,  poolInfo.lastRewardBlock: %s", lastBlock, poolInfo.lastRewardBlock);
+        // console.log("lastBlock: %s,  poolInfo.lastRewardBlock: %s", lastBlock, poolInfo.lastRewardBlock);
 
         if (lastBlock == poolInfo.lastRewardBlock || lastBlock <= startBlock) {
             return;
@@ -613,7 +613,8 @@ contract mockStakingRewards{
         uint256 userRewardDebt = user.rewardDebt;
 
         // call before LP transfer
-        _harvest(msg.sender, userAmount, userRewardDebt);
+        // _harvest(msg.sender, userAmount, userRewardDebt);
+        _harvest(msg.sender);
 
         mockLpTokenContract.safeTransferFrom(
             address(msg.sender),
@@ -636,14 +637,15 @@ contract mockStakingRewards{
 
         UserInfo storage user = userInfo[msg.sender];
         uint256 userAmount = user.amount;
-        uint256 userRewardDebt = user.rewardDebt;
+        // uint256 userRewardDebt = user.rewardDebt;
 
         require(
             userAmount >= _amount,
             "withdraw: can't withdraw more than deposit"
         );
 
-        _harvest(msg.sender, userAmount, userRewardDebt);
+        // _harvest(msg.sender, userAmount, userRewardDebt);
+        _harvest(msg.sender);
 
         // Update the reduced amount
         user.amount -= _amount;
@@ -660,15 +662,16 @@ contract mockStakingRewards{
     function harvest(address _to) public {
         require(_to != address(0), "receiver cannot be zero address");
         UserInfo storage user = userInfo[msg.sender];
-        user.rewardDebt = _harvest(_to, user.amount, user.rewardDebt);
+        user.rewardDebt = _harvest(_to);
+        // user.rewardDebt = _harvest(_to, user.amount, user.rewardDebt);
     }
 
     // used to sweep token dust and unclaimed tokens
     function sweep() external onlyAuthorized {
-        require(
-            block.timestamp > lastFunded + 90 days,
-            "90 days since last fund required"
-        );
+        // require(
+        //     block.timestamp > lastFunded + 90 days,
+        //     "90 days since last fund required"
+        // );
 
         mockTokenContract.safeTransfer(
             msg.sender,
@@ -681,19 +684,20 @@ contract mockStakingRewards{
 
     // cheaper than memory or storage struct - doesn't set any user fields in here
     function _harvest(
-        address _to,
-        uint256 userAmount,
-        uint256 userRewardDebt
+        address _to
+        // uint256 userAmount,
+        // uint256 userRewardDebt
     ) private returns (uint256 accumulatedmock) {
         updatePool();
 
-        if (userAmount == 0) {
+        if (userInfo[msg.sender].amount == 0) {
             accumulatedmock = 0;
         } else {
-            accumulatedmock =
-                (userAmount * poolInfo.accmockPerShare) /
-                REWARDS_MULTIPLIER;
-            uint256 pendingmock = accumulatedmock - userRewardDebt;
+            uint pendingmock = getUserPendingReward(msg.sender);
+            // accumulatedmock =
+            //     (userAmount * poolInfo.accmockPerShare) /
+            //     REWARDS_MULTIPLIER;
+            // uint256 pendingmock = accumulatedmock - userRewardDebt;
 
             if (pendingmock > 0) {
                 _mockRewardsTransfer(_to, pendingmock);

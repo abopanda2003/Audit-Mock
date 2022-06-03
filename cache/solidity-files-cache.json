@@ -235,8 +235,8 @@
       ]
     },
     "D:\\workspace\\blockchain\\Auditors\\audit_mocks-main\\contracts\\MockStakingRewards.sol": {
-      "lastModificationDate": 1654204861214,
-      "contentHash": "916f034a6a0da45481170dd0ef450a36",
+      "lastModificationDate": 1654226799041,
+      "contentHash": "0f8e0e79c667de3584a3398410bba1a8",
       "sourceName": "contracts/MockStakingRewards.sol",
       "solcConfig": {
         "version": "0.8.4",

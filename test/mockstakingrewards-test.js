@@ -15,12 +15,6 @@ let mockStakingRewards;
 let mgGovToken;
 let initCodePairHash;
 
-function dim() {
-  if (!process.env.HIDE_DEPLOY_LOG) {
-    console.log(chalk.dim.call(chalk, ...arguments));
-  }
-}
-
 function cyan() {
   if (!process.env.HIDE_DEPLOY_LOG) {
     console.log(chalk.cyan.call(chalk, ...arguments));
@@ -47,110 +41,6 @@ function displayResult(name, result) {
   }
 }
 
-const displayWalletBalances = async(tokenIns, bOwner, bAnother, bUser, bFarmingReward, bSponsor1, bSponsor2) => {
-
-  cyan("**************************************");
-  cyan("              Wallet Balances");
-  cyan("**************************************");
-
-  let count = 0;
-  if(bOwner){
-    let balance = await tokenIns.balanceOf(owner.address);
-    console.log("owner balance:",
-                ethers.utils.formatEther(balance.toString()));
-    count++;
-  }
-  if(bAnother){
-    let balance = await tokenIns.balanceOf(anotherUser.address);
-    console.log("another user balance:",
-                ethers.utils.formatEther(balance.toString()));
-    count++;
-  }
-  if(bUser){
-    let balance = await tokenIns.balanceOf(user.address);
-    console.log("user balance:",
-                ethers.utils.formatEther(balance.toString()));
-    count++;
-  }
-  if(bFarmingReward){
-    let balance = await tokenIns.balanceOf(farmRewardWallet.address);
-    console.log("farming reward wallet balance:",
-                ethers.utils.formatEther(balance.toString()));
-    count++;
-  }
-  if(bSponsor1){
-    let balance = await tokenIns.balanceOf(sponsor1.address);
-    console.log("sponsor1 balance:",
-                ethers.utils.formatEther(balance.toString()));
-    count++;
-  }
-  if(bSponsor2){
-    let balance = await tokenIns.balanceOf(sponsor2.address);
-    console.log("sponsor2 balance:",
-                ethers.utils.formatEther(balance.toString()));
-    count++;
-  }
-  if(count > 0)
-    green("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-};
-
-const displayUserInfo = async(farmContract, wallet) => {
-  let info = await farmContract.userInfoOf(wallet.address);
-  cyan("-------------------------------------------");
-  console.log("balance of wallet:", ethers.utils.formatEther(info.balance));
-  console.log("rewards of wallet:", info.rewards.toString());
-  console.log("reward per token paid of wallet:", info.rewardPerTokenPaid.toString());
-  console.log("last updated time of wallet:", info.balance.toString());
-}
-
-const displayLiquidityPoolBalance = async(comment, poolInstance) => {
-  let reservesPair = await poolInstance.getReserves();
-  console.log(comment);
-  let smtAmount = ethers.utils.formatEther(reservesPair.reserve0);
-  let busdAmount = ethers.utils.formatEther(reservesPair.reserve1);
-  console.log("SMT:", smtAmount);
-  console.log("BUSD:", busdAmount);
-  console.log("SMT Price: $", busdAmount/smtAmount);
-}
-
-const swapSMTForBNB = async(
-  pairInstance,
-  inputTokenIns, 
-  wallet,
-  exchangeRouter,
-  swapAmount
-) => {
-      console.log("----------------------- Swap SMT For BNB ---------------------");
-      await displayLiquidityPoolBalance("SMT-BNB Pool:", pairInstance);
-
-      let balance = await ethers.provider.getBalance(wallet.address);
-      console.log(">>> old balance: ", ethers.utils.formatEther(balance));
-
-      let tx = await inputTokenIns.connect(wallet).approve(
-          exchangeRouter.address,
-          ethers.utils.parseUnits(Number(swapAmount+100).toString(), 18)
-      );
-      await tx.wait();
-      let amountIn = ethers.utils.parseUnits(Number(swapAmount).toString(), 18);
-      let wEth = await exchangeRouter.WETH();
-      let amountsOut = await exchangeRouter.getAmountsOut(
-        amountIn,
-        [ inputTokenIns.address, wEth ]
-      );
-      console.log("excepted swap balance: ", ethers.utils.formatEther(amountsOut[1]));
-
-      tx = await exchangeRouter.connect(wallet).swapExactTokensForETHSupportingFeeOnTransferTokens(
-        amountIn, 0,
-        [ inputTokenIns.address, wEth ],
-        wallet.address,
-        "990000000000000000000"
-      );
-      await tx.wait();
-      balance = await ethers.provider.getBalance(wallet.address);
-      console.log(">>> new balance: ", ethers.utils.formatEther(balance));
-      await displayLiquidityPoolBalance("SMT-BNB Pool:", pairInstance);
-}
-
 const ONE = ethers.BigNumber.from(1);
 const TWO = ethers.BigNumber.from(2);
 
@@ -171,6 +61,19 @@ const toAmount = (amount) => {
 
 const parseAmount = (amount) => {
     return ethers.utils.parseEther(amount.toString());
+}
+
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const progress = async(ms) => {
+  let prog = "";
+  for(let i=0; i<ms; i++){
+    await sleep(1000);
+    prog += "#";
+    green(prog);
+  }
 }
 
 describe("Smtc Ecosystem Contracts Audit", () => {
@@ -354,7 +257,72 @@ describe("Smtc Ecosystem Contracts Audit", () => {
         const info = await mockStakingRewards.userInfo(user.address);
         await expect(info.amount).to.equal(depositAmount);
         console.log(`deposited LP amount of user${++i}: ${toAmount(depositAmount)}`);
+        await sleep(1000);
       }
+    })
+
+    it("Harvest Function Tested", async() => {
+        for(const user of users) {
+          let pendingReward = await mockStakingRewards.getUserPendingReward(user.address);
+          console.log("pending reward: ", toAmount(pendingReward));
+
+          await expect(await mockStakingRewards.connect(user).harvest(user.address))
+          .to.emit(mgGovToken, "Transfer")
+          .withArgs(mockStakingRewards.address, user.address, pendingReward.add(parseAmount(0.25)))
+          .to.emit(mockStakingRewards, "Harvest")
+          .withArgs(user.address, pendingReward.add(parseAmount(0.25)));
+        }
+
+        for(const user of users) {
+          let pendingReward = await mockStakingRewards.getUserPendingReward(user.address);
+          console.log("pending reward: ", toAmount(pendingReward));
+
+          await expect(await mockStakingRewards.connect(user).harvest(user.address))
+          .to.emit(mgGovToken, "Transfer")
+          .withArgs(mockStakingRewards.address, user.address, pendingReward.add(parseAmount(0.25)))
+          .to.emit(mockStakingRewards, "Harvest")
+          .withArgs(user.address, pendingReward.add(parseAmount(0.25)));
+        }
+    })
+
+    it("Withdraw Function Tested", async() => {
+      const pairLp = await mgGovToken._pairWeth();
+      const pairContract = await ethers.getContractAt(uniswapPairABI, pairLp);
+
+      let i=0;
+      for(const user of users) {
+        let dep = await mockStakingRewards.getUserDepositedAmount(user.address);
+        await expect(await mockStakingRewards.connect(user).withdraw(dep))
+        .to.emit(mockStakingRewards, "Withdraw")
+        .withArgs(user.address, dep);
+
+        dep = await mockStakingRewards.getUserDepositedAmount(user.address);
+        console.log(`the deposited LP amount of user${++i}: ${toAmount(dep)}`);
+
+        let bal = await pairContract.balanceOf(user.address);
+        console.log(`balance of user${i}: ${toAmount(bal)}`);
+      }
+    })
+
+    it("Sweep Function Tested", async() => {
+      let totalBalance = await mgGovToken.balanceOf(mockStakingRewards.address);
+      console.log("total balance: ", toAmount(totalBalance));
+
+      let oldOwner = await mgGovToken.balanceOf(owner.address);
+
+      await expect(await mockStakingRewards.connect(owner).sweep())
+      .to.emit(mgGovToken, "Transfer")
+      .withArgs(mockStakingRewards.address, owner.address, totalBalance);
+
+      let newOwner = await mgGovToken.balanceOf(owner.address);
+
+      await expect(newOwner.sub(oldOwner)).to.equal(totalBalance);
+
+      totalBalance = await mgGovToken.balanceOf(mockStakingRewards.address);
+      console.log("total balance: ", toAmount(totalBalance));
+
+      console.log("pool info: ", await mockStakingRewards.poolInfo());
+
     })
   });
 });
